@@ -1,15 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Group : Entity
+    public class Group : Entity, INotifyPropertyChanged
     {
         private static uint ID = 0;
 
-        public int groupNumber { get; private set; }
+        private int _groupNumber;
+        public int groupNumber
+        {
+            get { return _groupNumber; }
+            set
+            {
+                _groupNumber = value;
+                ChangeProperty();
+            }
+        }
 
         public Group(int groupNumber)
         {
@@ -20,7 +28,13 @@ namespace ProjectSTSlore
         {
             return $"Group: group - {groupNumber}, id - {id}";
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void ChangeProperty([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
+
     public class DBGroups : IDB<Group>
     {
         public DBGroups() : base() { }

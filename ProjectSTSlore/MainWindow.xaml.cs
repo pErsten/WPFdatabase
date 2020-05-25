@@ -20,7 +20,7 @@ namespace ProjectSTSlore
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static MainProgram mainProgram = new MainProgram();
+        public MainProgram mainProgram = new MainProgram();//no static fields in mainwindow!
         public MainWindow()
         {
             

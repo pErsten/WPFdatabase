@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -16,12 +15,7 @@ namespace ProjectSTSlore
     }
     public abstract class IDB<T> : ObservableCollection<T> where T : Entity
     {
-
-        //protected List<T> objects = null;
-        protected IDB()
-        {
-            //this.objects = new List<T>();
-        }
+        protected IDB() { }
         public virtual new void Add(T item)
         {
             base.Add(item);

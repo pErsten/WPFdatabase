@@ -1,15 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Subject : Entity
+    public class Subject : Entity, INotifyPropertyChanged
     {
         private static uint ID = 0;
 
-        public string subjectName { get; private set; }
+        private string _subjectName;
+        public string subjectName
+        {
+            get { return _subjectName; }
+            set
+            {
+                _subjectName = value;
+                ChangeProperty();
+            }
+        }
 
         public Subject(string subjectName)
         {
@@ -20,7 +28,13 @@ namespace ProjectSTSlore
         {
             return $"Subject: name - {subjectName}, id - {id}";
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void ChangeProperty([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
+
     public class DBSubjects : IDB<Subject>
     {
         public DBSubjects() : base() { }

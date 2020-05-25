@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
@@ -10,7 +8,7 @@ namespace ProjectSTSlore
 {
     public class MainProgram : INotifyPropertyChanged
     {
-        public static ObservableCollection<Student> students { set; get; } = new DBStudents();
+        public static ObservableCollection<Student> students { set; get; } = new DBStudents();//this looks terrifying, but it's the only way the program works
         public static ObservableCollection<Teacher> teachers { set; get; } = new DBTeachers();
         public static ObservableCollection<Subject> subjects { set; get; } = new DBSubjects();
         public static ObservableCollection<Group> groups { set; get; } = new DBGroups();
@@ -91,7 +89,7 @@ namespace ProjectSTSlore
             (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[2], (teacher_subjects as DBTeacher_Subjects)[3], 32));
             (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[2], (teacher_subjects as DBTeacher_Subjects)[5], 32));
 
-            /*Console.WriteLine((students as DBStudents).Count);
+            Console.WriteLine((students as DBStudents).Count);
 
             foreach (var elem in teacher_subjects)
                 Console.WriteLine(elem);
@@ -161,7 +159,7 @@ namespace ProjectSTSlore
                 {
                     Console.WriteLine($"\t{sebject.subject.subjectName}");
                 }
-            }*/
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,14 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Teacher : Entity
+    public class Teacher : Entity, INotifyPropertyChanged
     {
         private static uint ID = 0;
-        public Person person { set; get; }
+
+        private Person _person;
+        public Person person
+        {
+            get { return _person; }
+            set
+            {
+                _person = value;
+                ChangeProperty();
+            }
+        }
 
         public Teacher(string name, string surname, string patronymic, string address = default, bool id = false)
         {
@@ -24,9 +33,9 @@ namespace ProjectSTSlore
                 person = (MainProgram.persons as DBPersons).Last();
             }
         }
-        public Teacher(Person person, bool id = false)
+        public Teacher(Person Person, bool id = false)
         {
-            this.person = person;
+            this.person = Person;
             if (id)
                 this.id = 0;
             else
@@ -37,7 +46,13 @@ namespace ProjectSTSlore
         {
             return $"Teacher: name - {person.name}, surname - {person.surname}, patronymic - {person.patronymic}, id - {id}";
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void ChangeProperty([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
+
     public class DBTeachers : IDB<Teacher>
     {
         public DBTeachers() : base() { }

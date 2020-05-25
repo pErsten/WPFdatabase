@@ -1,16 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Teacher_Subject : Entity
+    public class Teacher_Subject : Entity, INotifyPropertyChanged
     {
         private static uint ID = 0;
 
-        public Subject subject;
-        public Teacher teacher;
+        private Subject _subject;
+        private Teacher _teacher;
+        public Subject subject
+        {
+            get { return _subject; }
+            set
+            {
+                _subject = value;
+                ChangeProperty();
+            }
+        }
+        public Teacher teacher
+        {
+            get { return _teacher; }
+            set
+            {
+                _teacher = value;
+                ChangeProperty();
+            }
+        }
 
         public Teacher_Subject(Subject subject, Teacher teacher)
         {
@@ -22,7 +39,13 @@ namespace ProjectSTSlore
         {
             return $"Teacher-Subject chain: id - {id}, id of subject - {subject.id}, id of teacher - {teacher.id}";
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void ChangeProperty([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
+
     public class DBTeacher_Subjects : IDB<Teacher_Subject>
     {
         public DBTeacher_Subjects() : base() { }

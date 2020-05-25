@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
@@ -12,14 +11,59 @@ namespace ProjectSTSlore
         TEACHER
     }
 
-    public class Person : Entity
+    public class Person : Entity, INotifyPropertyChanged
     {
         private static uint ID = 0;
-        public string name;
-        public string surname;
-        public string patronymic;
-        public string address;
-        public PersonRole personRole = PersonRole.NONE;
+        private string _name;
+        private string _surname;
+        private string _patronymic;
+        private string _address;
+        private PersonRole _personRole = PersonRole.NONE;
+        public string name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                ChangeProperty();
+            }
+        }
+        public string surname
+        {
+            get { return _surname; }
+            set
+            {
+                _surname = value;
+                ChangeProperty();
+            }
+        }
+        public string patronymic
+        {
+            get { return _patronymic; }
+            set
+            {
+                _patronymic = value;
+                ChangeProperty();
+            }
+        }
+        public string address
+        {
+            get { return _address; }
+            set
+            {
+                _address = value;
+                ChangeProperty();
+            }
+        }
+        public PersonRole personRole
+        {
+            get { return _personRole; }
+            set
+            {
+                _personRole = value;
+                ChangeProperty();
+            }
+        }
 
         public Person(string name, string surname, string patronymic, string address)
         {
@@ -33,7 +77,13 @@ namespace ProjectSTSlore
         {
             return $"Person: name - {name}, surname - {surname}, patronymic - {patronymic}, address - {address ?? "none"}, role - {personRole}";
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void ChangeProperty([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
+
     public class DBPersons : IDB<Person>
     {
         public DBPersons() : base() { }

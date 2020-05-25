@@ -1,17 +1,44 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Collections.Generic;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Marks : Entity
+    public class Marks : Entity, INotifyPropertyChanged
     {
         public static uint ID = 0;
         public int markPosition;
 
-        public List<byte> marksList { private set; get; }
-        public Student student { private set; get; }
-        public Group_TeacherSubject subjectForMarks { private set; get; }
+        private List<byte> _marksList;
+        private Student _student;
+        private Group_TeacherSubject _subjectForMarks;
+        public List<byte> marksList
+        {
+            get { return _marksList; }
+            set
+            {
+                _marksList = value;
+                ChangeProperty();
+            }
+        }
+        public Student student
+        {
+            get { return _student; }
+            set
+            {
+                _student = value;
+                ChangeProperty();
+            }
+        }
+        public Group_TeacherSubject subjectForMarks
+        {
+            get { return _subjectForMarks; }
+            set
+            {
+                _subjectForMarks = value;
+                ChangeProperty();
+            }
+        }
 
         public Marks(Student student, Group_TeacherSubject subjectForMarks)
         {
@@ -45,7 +72,13 @@ namespace ProjectSTSlore
         {
             return $"Marks: student name and surname - {student.person.name} {student.person.surname}, student id - {student.id}, chain id - {subjectForMarks.id}, subject id - {subjectForMarks.teacherSubject.subject.id}, subject name - {subjectForMarks.teacherSubject.subject.subjectName}";
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void ChangeProperty([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
+
     public class DBMarks : IDB<Marks>
     {
         public DBMarks() : base() { }
@@ -56,7 +89,7 @@ namespace ProjectSTSlore
         }
         protected override void DeepRemove(Marks entity)
         {
-            throw new Exception("you shouldn't be there");
+            Entity.errorMessage("you shouldn't be there");
         }
     }
 }

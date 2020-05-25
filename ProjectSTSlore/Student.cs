@@ -1,16 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Student : Entity
+    public class Student : Entity, INotifyPropertyChanged
     {
         private static uint ID = 0;
 
-        public Group group { private set; get; }
-        public Person person { private set; get; }
+        private Group _group;
+        private Person _person;
+        public Group group
+        {
+            get { return _group; }
+            set
+            {
+                _group = value;
+                ChangeProperty();
+            }
+        }
+        public Person person
+        {
+            get { return _person; }
+            set
+            {
+                _person = value;
+                ChangeProperty();
+            }
+        }
 
         public Student(string name, string surname, string patronymic, Group group, string address = default)
         {
@@ -31,7 +48,13 @@ namespace ProjectSTSlore
         {
             return $"Student: name - {person.name}, surname - {person.surname}, patronymic - {person.patronymic}, address - {person.address ?? "none"}, group - {group.groupNumber}, group id - {group.id}";
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void ChangeProperty([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
+
     public class DBStudents : IDB<Student>
     {
         public DBStudents() : base() { }
@@ -40,7 +63,7 @@ namespace ProjectSTSlore
         {
             if (newStudent.person.personRole != PersonRole.NONE)
             {
-                Entity.errorMessage("Error: trying to add used person in database as student");
+                Entity.errorMessage("Error: trying to add used in database person as student");
                 return;
             }
             newStudent.person.personRole = PersonRole.STUDENT;

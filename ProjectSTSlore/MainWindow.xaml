@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         
+        
     </Window.Resources>
     <DockPanel>
         <ListBox ItemsSource="{Binding groups}" MinHeight="40" MinWidth="100">
