@@ -88,10 +88,24 @@
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Height" Value="20"/>
             </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Red"/>
-                <Setter Property="Cursor" Value="Hand"/>
-            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                    <Condition Property="ItemsControl.AlternationIndex" Value="0"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Background" Value="OrangeRed"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                    <Condition Property="ItemsControl.AlternationIndex" Value="1"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Background" Value="DarkGray"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
         </Style.Triggers>
             <Setter Property="Focusable" Value="False"/>
         </Style>
