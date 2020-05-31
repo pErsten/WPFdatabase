@@ -48,6 +48,7 @@ namespace ProjectSTSlore
             (students as DBStudents).Add(new Student("Vlad", "Pahnenko", "Alexandrovich", (groups as DBGroups)[1]));
             (students as DBStudents).Add(new Student("Artem", "Letych", "Anatolievich", (groups as DBGroups)[1]));
             (students as DBStudents).Add(new Student("Vlad", "Skrishevskiy", "Valdemarovich", (groups as DBGroups)[1], "in the house"));
+            (students as DBStudents).Add(new Student("Vlad", "Artemenko", "Oleksandrovich", (groups as DBGroups)[1]));
             (students as DBStudents).Add(new Student("Acakiy", "Laptev", "Acakievich", (groups as DBGroups)[2]));
             (students as DBStudents).Add(new Student("Seraphim", "Tapochkin", "Mihailovich", (groups as DBGroups)[2]));
             (students as DBStudents).Add(new Student("Nikodim", "Polochkin", "Alexandrovich", (groups as DBGroups)[3]));

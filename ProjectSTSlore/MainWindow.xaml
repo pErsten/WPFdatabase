@@ -7,18 +7,127 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ListViewResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
-    <DockPanel>
-        <ListBox ItemsSource="{Binding groups}" MinHeight="40" MinWidth="100">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=groupNumber}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </DockPanel>
+    <TabControl>
+        <TabItem Header="Groups">
+            <ListView ItemsSource="{Binding groups}"
+                      HorizontalAlignment="Left"
+                      ItemContainerStyle="{StaticResource ItemIterator}"
+                      AlternationCount="2"
+                      Width="500">
+                <ListView.View>
+                    <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                              ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
+                        <GridViewColumn Header="GroupNumber" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=groupNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </TabItem>
+        <TabItem Header="Students">
+            <ListView ItemsSource="{Binding students}"
+                      HorizontalAlignment="Left"
+                      ItemContainerStyle="{StaticResource ItemIterator}"
+                      AlternationCount="2"
+                      Width="500">
+                <ListView.View>
+                    <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                              ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
+                        <GridViewColumn Header="GroupNumber" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=group.groupNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Name" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.name, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Surname" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.surname, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Patronymic" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.patronymic, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </TabItem>
+        <TabItem Header="Teachers">
+            <ListView ItemsSource="{Binding teachers}"
+                      HorizontalAlignment="Left"
+                      ItemContainerStyle="{StaticResource ItemIterator}"
+                      AlternationCount="2"
+                      Width="500">
+                <ListView.View>
+                    <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                              ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
+                        <GridViewColumn Header="Name" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.name, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Surname" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.surname, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Patronymic" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.patronymic, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </TabItem>
+        <TabItem Header="Subjects">
+            <ListView ItemsSource="{Binding subjects}"
+                      HorizontalAlignment="Left"
+                      ItemContainerStyle="{StaticResource ItemIterator}"
+                      AlternationCount="2"
+                      Width="500">
+                <ListView.View>
+                    <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                              ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
+                        <GridViewColumn Header="Subject" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=subjectName, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </TabItem>
+    </TabControl>
 </Window>
