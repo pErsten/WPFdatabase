@@ -90,14 +90,21 @@ namespace ProjectSTSlore
 
         public override void Add(Person newPerson)
         {
+            if (!Check(newPerson)) return;
+            base.Add(newPerson);
+        }
+
+        public override bool Check(Person newPerson)
+        {
             foreach (Person listedPerson in Items)
                 if (listedPerson.surname == newPerson.surname && listedPerson.name == newPerson.name && listedPerson.patronymic == newPerson.patronymic)
                 {
                     Entity.errorMessage("Error: trying to add person with the same name, surname and patronymic");
-                    return;
+                    return false;
                 }
-            base.Add(newPerson);
+            return true;
         }
+
         protected override void DeepRemove(Person entity)//удаление человека вместе с классом содержащий его роль (студент или учитель)
         {
             if (entity.personRole == PersonRole.NONE)

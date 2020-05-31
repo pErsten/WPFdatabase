@@ -59,14 +59,21 @@ namespace ProjectSTSlore
 
         public override void Add(Teacher newTeacher)
         {
-            if (newTeacher.person.personRole != PersonRole.NONE)
-            {
-                Entity.errorMessage("Error: trying to add existing teacher");
-                return;
-            }
+            if (!Check(newTeacher)) return;
             newTeacher.person.personRole = PersonRole.TEACHER;
             base.Add(newTeacher);
         }
+
+        public override bool Check(Teacher newTeacher)
+        {
+            if (newTeacher.person.personRole != PersonRole.NONE)
+            {
+                Entity.errorMessage("Error: trying to add existing teacher");
+                return false;
+            }
+            return true;
+        }
+
         protected override void DeepRemove(Teacher entity)//удаление учителя и замена на учителя по-умолчанию в связанных таблицах
         {
             entity.person.personRole = PersonRole.NONE;

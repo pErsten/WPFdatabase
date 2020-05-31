@@ -107,6 +107,5 @@
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </Style.Triggers>
-            <Setter Property="Focusable" Value="False"/>
-        </Style>
+    </Style>
 </ResourceDictionary>

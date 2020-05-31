@@ -41,14 +41,21 @@ namespace ProjectSTSlore
 
         public override void Add(Subject newSubject)
         {
+            if (!Check(newSubject)) return;
+            base.Add(newSubject);
+        }
+
+        public override bool Check(Subject newSubject)
+        {
             foreach (Subject listedSubject in Items)
                 if (listedSubject.subjectName == newSubject.subjectName)
                 {
                     Entity.errorMessage("Error: trying to add exisiting subject");
-                    return;
+                    return false;
                 }
-            base.Add(newSubject);
+            return true;
         }
+
         protected override void DeepRemove(Subject entity)//удаление предмета, и всего того, что связано с этим предметом
         {
             for (int j = 0; j < (MainProgram.teacher_subjects as DBTeacher_Subjects).Count();)

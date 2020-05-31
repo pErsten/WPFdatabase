@@ -1,0 +1,27 @@
+﻿<Window x:Class="ProjectSTSlore.GroupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectSTSlore"
+        mc:Ignorable="d"
+        Title="GroupWindow" Height="200" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="gsjflkj"/>
+        <TextBox Grid.Row="1" x:Name="GroupWindow_GroupNumber"/>
+        <Grid Grid.Row="2" Margin="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="OK" IsDefault="True" Click="Submit_Click"/>
+            <Button Grid.Column="2" Content="Cancel" IsCancel="True" Click="Cancel_Click"/>
+        </Grid>
+    </Grid>
+</Window>

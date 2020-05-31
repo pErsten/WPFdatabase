@@ -61,11 +61,7 @@ namespace ProjectSTSlore
 
         public override void Add(Student newStudent)
         {
-            if (newStudent.person.personRole != PersonRole.NONE)
-            {
-                Entity.errorMessage("Error: trying to add used in database person as student");
-                return;
-            }
+            if (!Check(newStudent)) return;
             newStudent.person.personRole = PersonRole.STUDENT;
             base.Add(newStudent);
             var groups = from t in (MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects)
@@ -76,6 +72,17 @@ namespace ProjectSTSlore
                 (MainProgram.marks as DBMarks).Add(new Marks(newStudent, group));
             }
         }
+
+        public override bool Check(Student newStudent)
+        {
+            if (newStudent.person.personRole != PersonRole.NONE)
+            {
+                Entity.errorMessage("Error: trying to add used in database person as student");
+                return false;
+            }
+            return true;
+        }
+
         protected override void DeepRemove(Student entity)//удаление студента со всеми его оценками
         {
             entity.person.personRole = PersonRole.NONE;

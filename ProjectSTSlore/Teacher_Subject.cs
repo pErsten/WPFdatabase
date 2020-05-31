@@ -52,14 +52,20 @@ namespace ProjectSTSlore
 
         public override void Add(Teacher_Subject newTeacher_Subject)
         {
+            base.Add(newTeacher_Subject);
+        }
+
+        public override bool Check(Teacher_Subject newTeacher_Subject)
+        {
             foreach (Teacher_Subject listedTeacher_Subject in Items)
                 if (listedTeacher_Subject.subject.id == newTeacher_Subject.subject.id && listedTeacher_Subject.teacher.id == newTeacher_Subject.teacher.id)
                 {
                     Entity.errorMessage("Error: trying to add exisiting chain of teachers and subjects");
-                    return;
+                    return false;
                 }
-            base.Add(newTeacher_Subject);
+            return true;
         }
+
         protected override void DeepRemove(Teacher_Subject entity)//удаление связи предмета с учителем и замена на учителя по-умолчанию в связанной таблице
         {
             for (int i = 0; i < (MainProgram.teacher_subjects as DBTeacher_Subjects).Count(); i++)

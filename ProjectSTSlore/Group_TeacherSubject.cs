@@ -63,12 +63,7 @@ namespace ProjectSTSlore
 
         public override void Add(Group_TeacherSubject newGroup_TeacherSubject)
         {
-            foreach (Group_TeacherSubject listedGroup_TeacherSubject in Items)
-                if (listedGroup_TeacherSubject.group.id == newGroup_TeacherSubject.group.id && listedGroup_TeacherSubject.teacherSubject.subject.id == newGroup_TeacherSubject.teacherSubject.subject.id)
-                {
-                    Entity.errorMessage("Error: trying to add two same subjects to the same group");
-                    return;
-                }
+            if (!Check(newGroup_TeacherSubject)) return;
             base.Add(newGroup_TeacherSubject);
             var students = from t in (MainProgram.students as DBStudents)
                            where t.@group == newGroup_TeacherSubject.@group
@@ -78,6 +73,18 @@ namespace ProjectSTSlore
                 (MainProgram.marks as DBMarks).Add(new Marks(student, newGroup_TeacherSubject));
             }
         }
+
+        public override bool Check(Group_TeacherSubject newGroup_TeacherSubject)
+        {
+            foreach (Group_TeacherSubject listedGroup_TeacherSubject in Items)
+                if (listedGroup_TeacherSubject.group.id == newGroup_TeacherSubject.group.id && listedGroup_TeacherSubject.teacherSubject.subject.id == newGroup_TeacherSubject.teacherSubject.subject.id)
+                {
+                    Entity.errorMessage("Error: trying to add two same subjects to the same group");
+                    return false;
+                }
+            return true;
+        }
+
         protected override void DeepRemove(Group_TeacherSubject entity)//удаление предмета в группе, вместе со всеми оценками
         {
             for (int i = 0; i < (MainProgram.marks as DBMarks).Count();)

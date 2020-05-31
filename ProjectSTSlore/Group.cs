@@ -41,13 +41,18 @@ namespace ProjectSTSlore
 
         public override void Add(Group newGroup)
         {
+            if (!Check(newGroup)) return;
+            base.Add(newGroup);
+        }
+        public override bool Check(Group newGroup)
+        {
             foreach (Group listedGroup in Items)
                 if (listedGroup.groupNumber == newGroup.groupNumber)
                 {
                     Entity.errorMessage("Error: trying to add already existing group");
-                    return;
+                    return false;
                 }
-            base.Add(newGroup);
+            return true;
         }
         protected override void DeepRemove(Group entity)
         {

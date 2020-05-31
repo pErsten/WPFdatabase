@@ -87,6 +87,10 @@ namespace ProjectSTSlore
         {
             base.Add(newMarks);
         }
+        public override bool Check(Marks newMarks)
+        {
+            return true;
+        }
         protected override void DeepRemove(Marks entity)
         {
             Entity.errorMessage("you shouldn't be there");

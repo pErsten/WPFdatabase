@@ -3,11 +3,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Input;
 
 namespace ProjectSTSlore
 {
     public class MainProgram : INotifyPropertyChanged
     {
+        //a shit ton of collections
         public static ObservableCollection<Student> students { set; get; } = new DBStudents();//this looks terrifying, but it's the only way the program works
         public static ObservableCollection<Teacher> teachers { set; get; } = new DBTeachers();
         public static ObservableCollection<Subject> subjects { set; get; } = new DBSubjects();
@@ -16,20 +19,69 @@ namespace ProjectSTSlore
         public static ObservableCollection<Teacher_Subject> teacher_subjects { set; get; } = new DBTeacher_Subjects();
         public static ObservableCollection<Marks> marks { set; get; } = new DBMarks();
         public static ObservableCollection<Person> persons { set; get; } = new DBPersons();
-
+        
+        //default entities, for the sake of having a default user
         public static Person defaultPerson = new Person("N/A", "N/A", "N/A", default);
         public static Teacher defaultTeacher = new Teacher(defaultPerson, true);
 
-        public static void Message(string message)
+        //here are the class fields
+        private Group selectedGroup;
+        public Group SelectedGroup
         {
-            throw new Exception(message);
+            get { return selectedGroup; }
+            set
+            {
+                selectedGroup = value;
+                ChangeProperty();
+            }
         }
 
+        //commands
+        private CommandClass addGroup;
+        private CommandClass editGroup;
+        public CommandClass AddGroup
+        {
+            get
+            {
+                return addGroup ??
+                (addGroup = new CommandClass(obj =>
+                {
+                    Group group = new Group(0);//messing with new group
+                    GroupWindow groupWindow = new GroupWindow(group);
+                    groupWindow.ShowDialog();//and if it's all okay with new group
+                    if(groupWindow.group != null)
+                        (groups as DBGroups).Add(groupWindow.group);//it adds to the group collection
+                }));
+            }
+        }
+        public CommandClass EditGroup
+        {
+            get
+            {
+                return editGroup ??
+                (editGroup = new CommandClass(obj =>
+                {
+                    Group group = new Group(SelectedGroup.groupNumber);
+
+                    GroupWindow groupWindow = new GroupWindow(group);
+                    groupWindow.ShowDialog();
+                    if (groupWindow.group == null || !(groups as DBGroups).Check(groupWindow.group)) return;
+
+                    (groups as DBGroups)[(int)SelectedGroup.id].groupNumber = groupWindow.group.groupNumber;
+                },(obj) => SelectedGroup != null));
+            }
+        }
+
+        //other stuff
+        public static void Message(string message)
+        {
+            //throw new Exception(message);
+            MessageBox.Show(message);
+        }
         public MainProgram()
         {
             StarterPack();
         }
-
         public void StarterPack()
         {
             (groups as DBGroups).Add(new Group(391));
@@ -163,10 +215,38 @@ namespace ProjectSTSlore
             }
         }
 
+        //a default event for this program to work
         public event PropertyChangedEventHandler PropertyChanged;
         public void ChangeProperty([CallerMemberName]string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+    }
+    public class CommandClass : ICommand
+    {
+        private Action<object> execute;
+        private Func<object, bool> canExecute;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public CommandClass(Action<object> execute, Func<object, bool> canExecute = null)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return this.canExecute == null || this.canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            this.execute(parameter);
         }
     }
 }

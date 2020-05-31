@@ -20,6 +20,7 @@ namespace ProjectSTSlore
         {
             base.Add(item);
         }
+        public abstract bool Check(T newItem);
         private int BinarySearchById(int id)
         {
             if (id > Items.Last().id)

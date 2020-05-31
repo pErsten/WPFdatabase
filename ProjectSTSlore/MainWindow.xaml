@@ -13,26 +13,47 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <TabControl>
+    <TabControl TabStripPlacement="Left">
+        <TabControl.Resources>
+            <Style TargetType="{x:Type TabItem}">
+                <Setter Property="Padding" Value="4" />
+                <Setter Property="HeaderTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <ContentPresenter Content="{TemplateBinding Content}">
+                                <ContentPresenter.LayoutTransform>
+                                    <RotateTransform Angle="270" />
+                                </ContentPresenter.LayoutTransform>
+                            </ContentPresenter>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </TabControl.Resources>
         <TabItem Header="Groups">
-            <ListView ItemsSource="{Binding groups}"
-                      HorizontalAlignment="Left"
-                      ItemContainerStyle="{StaticResource ItemIterator}"
-                      AlternationCount="2"
-                      Width="500">
-                <ListView.View>
-                    <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
-                              ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
-                        <GridViewColumn Header="GroupNumber" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=groupNumber, UpdateSourceTrigger=PropertyChanged}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <StackPanel>
+                <ListView ItemsSource="{Binding groups}"
+                          HorizontalAlignment="Left"
+                          ItemContainerStyle="{StaticResource ItemIterator}"
+                          SelectedItem="{Binding SelectedGroup, UpdateSourceTrigger=PropertyChanged}"
+                          AlternationCount="2"
+                          Width="500">
+                    <ListView.View>
+                        <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                                  ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
+                            <GridViewColumn Header="GroupNumber" Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=groupNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="groupAdd" Content="Add" Command="{Binding AddGroup}"/>
+                <Button x:Name="groupEdit" Content="Edit" Command="{Binding EditGroup}"/>
+            </StackPanel>
         </TabItem>
         <TabItem Header="Students">
             <ListView ItemsSource="{Binding students}"
