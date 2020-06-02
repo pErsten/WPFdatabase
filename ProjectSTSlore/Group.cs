@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Group : Entity, INotifyPropertyChanged
+    public class Group : Entity
     {
         private static uint ID = 0;
 
@@ -19,19 +19,17 @@ namespace ProjectSTSlore
             }
         }
 
-        public Group(int groupNumber)
+        public Group(int groupNumber, byte id = 1)
         {
-            id = ++ID;
+            if (id == 0)
+                this.id = 0;
+            else
+                this.id = ++ID;
             this.groupNumber = groupNumber;
         }
         public override string ToString()
         {
             return $"Group: group - {groupNumber}, id - {id}";
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void ChangeProperty([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 
@@ -39,10 +37,9 @@ namespace ProjectSTSlore
     {
         public DBGroups() : base() { }
 
-        public override void Add(Group newGroup)
+        public override void AddWithoutCheck(Group newGroup)
         {
-            if (!Check(newGroup)) return;
-            base.Add(newGroup);
+            base.AddWithoutCheck(newGroup);
         }
         public override bool Check(Group newGroup)
         {
@@ -58,16 +55,16 @@ namespace ProjectSTSlore
         {
             for (int i = 0; i < (MainProgram.students as DBStudents).Count();)
             {
-                if ((MainProgram.students as DBStudents)[i, false].group.id == entity.id)
+                if ((MainProgram.students as DBStudents)[i].group.id == entity.id)
                 {
-                    (MainProgram.students as DBStudents).RemoveByIndex(i);//удаление студентов с оценками
+                    (MainProgram.students as DBStudents).Remove((MainProgram.students as DBStudents)[i]);//удаление студентов с оценками
                     continue;
                 }
                 i++;
             }
             for (int i = 0; i < (MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects).Count();)
             {
-                if ((MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects)[i, false].group.id == entity.id)
+                if ((MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects)[i].group.id == entity.id)
                 {
                     (MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects).SoftRemove(i);//удаление только связей, так как все связанные оценки уже удалены прошлым циклом
                     continue;

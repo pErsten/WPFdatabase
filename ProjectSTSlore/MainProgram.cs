@@ -19,12 +19,15 @@ namespace ProjectSTSlore
         public static ObservableCollection<Teacher_Subject> teacher_subjects { set; get; } = new DBTeacher_Subjects();
         public static ObservableCollection<Marks> marks { set; get; } = new DBMarks();
         public static ObservableCollection<Person> persons { set; get; } = new DBPersons();
-        
+
         //default entities, for the sake of having a default user
-        public static Person defaultPerson = new Person("N/A", "N/A", "N/A", default);
-        public static Teacher defaultTeacher = new Teacher(defaultPerson, true);
+        public static Group defaultGroup = new Group(default, 0);
+        public static Person defaultPerson = new Person(default, default, default, default, 0);
+        public static Teacher defaultTeacher = new Teacher(defaultPerson, 0);
+        public static Student defaultStudent = new Student(defaultPerson, defaultGroup, 0);
 
         //here are the class fields
+        private int selectedGroupIndex;
         private Group selectedGroup;
         public Group SelectedGroup
         {
@@ -35,10 +38,20 @@ namespace ProjectSTSlore
                 ChangeProperty();
             }
         }
+        public int SelectedGroupIndex
+        {
+            get { return selectedGroupIndex; }
+            set
+            {
+                selectedGroupIndex = value;
+                ChangeProperty();
+            }
+        }
 
         //commands
         private CommandClass addGroup;
         private CommandClass editGroup;
+        private CommandClass deleteGroup;
         public CommandClass AddGroup
         {
             get
@@ -46,11 +59,10 @@ namespace ProjectSTSlore
                 return addGroup ??
                 (addGroup = new CommandClass(obj =>
                 {
-                    Group group = new Group(0);//messing with new group
-                    GroupWindow groupWindow = new GroupWindow(group);
-                    groupWindow.ShowDialog();//and if it's all okay with new group
-                    if(groupWindow.group != null)
-                        (groups as DBGroups).Add(groupWindow.group);//it adds to the group collection
+                    GroupWindow groupWindow = new GroupWindow(defaultGroup);//sending default value to class, where it creates copy of it
+                    groupWindow.ShowDialog();//and if it's all okay with new group(no exceptions)
+                    if (groupWindow.group != null)
+                        (groups as DBGroups).AddWithoutCheck(groupWindow.group);//it adds to the group collection(GroupWindow checks if it's a valid value, hence check is now useless)
                 }));
             }
         }
@@ -61,14 +73,24 @@ namespace ProjectSTSlore
                 return editGroup ??
                 (editGroup = new CommandClass(obj =>
                 {
-                    Group group = new Group(SelectedGroup.groupNumber);
+                    Group group = new Group(SelectedGroup.groupNumber, 0);
 
                     GroupWindow groupWindow = new GroupWindow(group);
                     groupWindow.ShowDialog();
-                    if (groupWindow.group == null || !(groups as DBGroups).Check(groupWindow.group)) return;
-
-                    (groups as DBGroups)[(int)SelectedGroup.id].groupNumber = groupWindow.group.groupNumber;
+                    if (groupWindow.group != null)
+                        SelectedGroup.groupNumber = groupWindow.group.groupNumber;
                 },(obj) => SelectedGroup != null));
+            }
+        }
+        public CommandClass DeleteGroup
+        {
+            get
+            {
+                return deleteGroup ??
+                (deleteGroup = new CommandClass(obj => 
+                {
+                    (groups as DBGroups).Remove(obj as Group);
+                },(obj) => obj != null));
             }
         }
 
@@ -94,19 +116,19 @@ namespace ProjectSTSlore
 
             //(persons as DBPersons).Add(new Person("Vlad", "Pahnenko", "Alexandrovich", default));
 
-            (students as DBStudents).Add(new Student("Alex", "Maudza", "Romanovich", (groups as DBGroups)[1]));
-            (students as DBStudents).Add(new Student("Misha", "Kadochnikov", "Andreevich", (groups as DBGroups)[1]));
-            (students as DBStudents).Add(new Student("David", "Zhidkov", "Sergeevich", (groups as DBGroups)[1]));
-            (students as DBStudents).Add(new Student("Vlad", "Pahnenko", "Alexandrovich", (groups as DBGroups)[1]));
-            (students as DBStudents).Add(new Student("Artem", "Letych", "Anatolievich", (groups as DBGroups)[1]));
-            (students as DBStudents).Add(new Student("Vlad", "Skrishevskiy", "Valdemarovich", (groups as DBGroups)[1], "in the house"));
-            (students as DBStudents).Add(new Student("Vlad", "Artemenko", "Oleksandrovich", (groups as DBGroups)[1]));
-            (students as DBStudents).Add(new Student("Acakiy", "Laptev", "Acakievich", (groups as DBGroups)[2]));
-            (students as DBStudents).Add(new Student("Seraphim", "Tapochkin", "Mihailovich", (groups as DBGroups)[2]));
-            (students as DBStudents).Add(new Student("Nikodim", "Polochkin", "Alexandrovich", (groups as DBGroups)[3]));
-            (students as DBStudents).Add(new Student("Ricardo", "Milos", "Artiomovich", (groups as DBGroups)[3]));
-            (students as DBStudents).Add(new Student("Marpha", "Stulieva", "Davidova", (groups as DBGroups)[5]));
-            (students as DBStudents).Add(new Student("David", "Nauoutboukov", "Nicodimovich", (groups as DBGroups)[5]));
+            (students as DBStudents).Add(new Student("Alex", "Maudza", "Romanovich", (groups as DBGroups)[0]));
+            (students as DBStudents).Add(new Student("Misha", "Kadochnikov", "Andreevich", (groups as DBGroups)[0]));
+            (students as DBStudents).Add(new Student("David", "Zhidkov", "Sergeevich", (groups as DBGroups)[0]));
+            (students as DBStudents).Add(new Student("Vlad", "Pahnenko", "Alexandrovich", (groups as DBGroups)[0]));
+            (students as DBStudents).Add(new Student("Artem", "Letych", "Anatolievich", (groups as DBGroups)[0]));
+            (students as DBStudents).Add(new Student("Vlad", "Skrishevskiy", "Valdemarovich", (groups as DBGroups)[0], "in the house"));
+            (students as DBStudents).Add(new Student("Vlad", "Artemenko", "Oleksandrovich", (groups as DBGroups)[0]));
+            (students as DBStudents).Add(new Student("Acakiy", "Laptev", "Acakievich", (groups as DBGroups)[1]));
+            (students as DBStudents).Add(new Student("Seraphim", "Tapochkin", "Mihailovich", (groups as DBGroups)[1]));
+            (students as DBStudents).Add(new Student("Nikodim", "Polochkin", "Alexandrovich", (groups as DBGroups)[2]));
+            (students as DBStudents).Add(new Student("Ricardo", "Milos", "Artiomovich", (groups as DBGroups)[2]));
+            (students as DBStudents).Add(new Student("Marpha", "Stulieva", "Davidova", (groups as DBGroups)[4]));
+            (students as DBStudents).Add(new Student("David", "Nauoutboukov", "Nicodimovich", (groups as DBGroups)[4]));
             
             (teachers as DBTeachers).Add(new Teacher("o", "hfdg", "hgd"));
             (teachers as DBTeachers).Add(new Teacher("a", "hfdg", "hgd"));
@@ -120,27 +142,27 @@ namespace ProjectSTSlore
             (subjects as DBSubjects).Add(new Subject("english"));
             (subjects as DBSubjects).Add(new Subject("ukrainian"));
             
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[1], (teachers as DBTeachers)[1]));
+            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[0], (teachers as DBTeachers)[0]));
+            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[0], (teachers as DBTeachers)[1]));
             (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[1], (teachers as DBTeachers)[2]));
+            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[3], (teachers as DBTeachers)[1]));
+            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[4], (teachers as DBTeachers)[1]));
+            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[0], (teachers as DBTeachers)[2]));
             (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[2], (teachers as DBTeachers)[3]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[4], (teachers as DBTeachers)[2]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[5], (teachers as DBTeachers)[2]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[1], (teachers as DBTeachers)[3]));
             (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[3], (teachers as DBTeachers)[4]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[4], (teachers as DBTeachers)[5]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[5], (teachers as DBTeachers)[5]));
+            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[4], (teachers as DBTeachers)[4]));
             
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[1], 56));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[7], 56));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[3], 32));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[4], 32));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[5], 56));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[0], (teacher_subjects as DBTeacher_Subjects)[0], 56));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[0], (teacher_subjects as DBTeacher_Subjects)[6], 56));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[0], (teacher_subjects as DBTeacher_Subjects)[2], 32));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[0], (teacher_subjects as DBTeacher_Subjects)[3], 32));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[0], (teacher_subjects as DBTeacher_Subjects)[4], 56));
 
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[2], (teacher_subjects as DBTeacher_Subjects)[2], 56));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[2], (teacher_subjects as DBTeacher_Subjects)[7], 56));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[2], (teacher_subjects as DBTeacher_Subjects)[4], 32));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[2], (teacher_subjects as DBTeacher_Subjects)[3], 32));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[2], (teacher_subjects as DBTeacher_Subjects)[5], 32));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[1], 56));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[6], 56));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[3], 32));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[2], 32));
+            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[4], 32));
 
             Console.WriteLine((students as DBStudents).Count);
 
@@ -170,8 +192,8 @@ namespace ProjectSTSlore
             Console.WriteLine();
             Console.WriteLine();
 
-            (subjects as DBSubjects).RemoveById(1);
-            (students as DBStudents).RemoveById(2);
+            (subjects as DBSubjects).Remove((subjects as DBSubjects)[1]);
+            (students as DBStudents).Remove((students as DBStudents)[2]);
 
             foreach (var elem in teacher_subjects)
                 Console.WriteLine(elem);

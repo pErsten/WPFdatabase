@@ -11,7 +11,7 @@ namespace ProjectSTSlore
         TEACHER
     }
 
-    public class Person : Entity, INotifyPropertyChanged
+    public class Person : Entity
     {
         private static uint ID = 0;
         private string _name;
@@ -65,9 +65,12 @@ namespace ProjectSTSlore
             }
         }
 
-        public Person(string name, string surname, string patronymic, string address)
+        public Person(string name, string surname, string patronymic, string address, byte id = 1)
         {
-            this.id = ID++;
+            if (id == 0)
+                this.id = 0;
+            else
+                this.id = ++ID;
             this.name = name;
             this.surname = surname;
             this.patronymic = patronymic;
@@ -77,21 +80,15 @@ namespace ProjectSTSlore
         {
             return $"Person: name - {name}, surname - {surname}, patronymic - {patronymic}, address - {address ?? "none"}, role - {personRole}";
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void ChangeProperty([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 
     public class DBPersons : IDB<Person>
     {
         public DBPersons() : base() { }
 
-        public override void Add(Person newPerson)
+        public override void AddWithoutCheck(Person newPerson)
         {
-            if (!Check(newPerson)) return;
-            base.Add(newPerson);
+            base.AddWithoutCheck(newPerson);
         }
 
         public override bool Check(Person newPerson)
@@ -112,18 +109,18 @@ namespace ProjectSTSlore
             if (entity.personRole == PersonRole.STUDENT)
                 for (int i = 0; i < (MainProgram.students as DBStudents).Count(); i++)
                 {
-                    if (MainProgram.students[i].person.id == entity.id)
+                    if ((MainProgram.students as DBStudents)[i].person.id == entity.id)
                     {
-                        (MainProgram.students as DBStudents).RemoveByIndex(i);
+                        (MainProgram.students as DBStudents).Remove((MainProgram.students as DBStudents)[i]);
                         return;
                     }
                 }
             if (entity.personRole == PersonRole.TEACHER)
                 for (int i = 0; i < (MainProgram.teachers as DBTeachers).Count(); i++)
                 {
-                    if (MainProgram.teachers[i].person.id == entity.id)
+                    if ((MainProgram.teachers as DBTeachers)[i].person.id == entity.id)
                     {
-                        (MainProgram.teachers as DBTeachers).RemoveByIndex(i);
+                        (MainProgram.teachers as DBTeachers).Remove((MainProgram.teachers as DBTeachers)[i]);
                         return;
                     }
                 }

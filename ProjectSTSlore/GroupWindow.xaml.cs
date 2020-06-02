@@ -18,7 +18,7 @@ namespace ProjectSTSlore
     /// <summary>
     /// Логика взаимодействия для GroupWindow.xaml
     /// </summary>
-    public partial class GroupWindow : Window, INotifyPropertyChanged
+    public partial class GroupWindow : Window, IDialogueWindow, INotifyPropertyChanged
     {
         public Group group;
         public GroupWindow(Group group)
@@ -27,22 +27,54 @@ namespace ProjectSTSlore
 
             this.group = new Group(group.groupNumber);
             GroupWindow_GroupNumber.Text = group.groupNumber.ToString();
-        }
-
-        private void Submit_Click(object sender, RoutedEventArgs e)
-        {
-            group.groupNumber = Convert.ToInt32(GroupWindow_GroupNumber.Text);
-            this.DialogResult = true;
-        }
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            group = null;
+            this.Closed += Cancel_Click;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void ChangeProperty([CallerMemberName]string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            int groupNumber;
+            try
+            {
+                groupNumber = Convert.ToInt32(GroupWindow_GroupNumber.Text);
+            }
+            catch
+            {
+                Entity.errorMessage("use correct symbols!");
+                return;
+            }
+
+            if (group.groupNumber == default)//if it was add command
+            {
+
+            }
+            else//if it was edit command
+            {
+                if (groupNumber == group.groupNumber)
+                {
+                    this.Closed -= Cancel_Click;
+                    this.DialogResult = true;
+                    return;
+                }
+            }
+            group.groupNumber = groupNumber;
+            if (!(MainProgram.groups as DBGroups).Check(group))
+            {
+                group.groupNumber = default;
+                return;
+            }
+            this.Closed -= Cancel_Click;
+            this.DialogResult = true;
+        }
+
+        public void Cancel_Click(object sender, EventArgs e)
+        {
+            group = null;
         }
     }
 }

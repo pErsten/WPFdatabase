@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Teacher : Entity, INotifyPropertyChanged
+    public class Teacher : Entity
     {
         private static uint ID = 0;
 
@@ -19,12 +19,12 @@ namespace ProjectSTSlore
             }
         }
 
-        public Teacher(string name, string surname, string patronymic, string address = default, bool id = false)
+        public Teacher(string name, string surname, string patronymic, string address = default, byte id = 1)
         {
-            if (id)
+            if (id == 0)
             {
                 this.id = 0;
-                person = new Person(name, surname, patronymic, address);
+                person = new Person(name, surname, patronymic, address, 0);
             }
             else
             {
@@ -33,23 +33,18 @@ namespace ProjectSTSlore
                 person = (MainProgram.persons as DBPersons).Last();
             }
         }
-        public Teacher(Person Person, bool id = false)
+        public Teacher(Person Person, byte id = 1)
         {
-            this.person = Person;
-            if (id)
+            if (id == 0)
                 this.id = 0;
             else
                 this.id = ++ID;
+            this.person = Person;
 
         }
         public override string ToString()
         {
             return $"Teacher: name - {person.name}, surname - {person.surname}, patronymic - {person.patronymic}, id - {id}";
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void ChangeProperty([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 
@@ -57,11 +52,10 @@ namespace ProjectSTSlore
     {
         public DBTeachers() : base() { }
 
-        public override void Add(Teacher newTeacher)
+        public override void AddWithoutCheck(Teacher newTeacher)
         {
-            if (!Check(newTeacher)) return;
             newTeacher.person.personRole = PersonRole.TEACHER;
-            base.Add(newTeacher);
+            base.AddWithoutCheck(newTeacher);
         }
 
         public override bool Check(Teacher newTeacher)
@@ -80,9 +74,9 @@ namespace ProjectSTSlore
             entity.person = MainProgram.defaultPerson;//не помню для чего это нужно, убери и проверь это как нибудь
             for (int i = 0; i < (MainProgram.teacher_subjects as DBTeacher_Subjects).Count();)
             {
-                if ((MainProgram.teacher_subjects as DBTeacher_Subjects)[i, false].teacher.id == entity.id)
+                if ((MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher.id == entity.id)
                 {
-                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i, false].teacher = MainProgram.defaultTeacher;
+                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher = MainProgram.defaultTeacher;
                     continue;
                 }
                 i++;

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Group_TeacherSubject : Entity, INotifyPropertyChanged
+    public class Group_TeacherSubject : Entity
     {
         private static uint ID = 0;
 
@@ -39,9 +39,12 @@ namespace ProjectSTSlore
             }
         }
 
-        public Group_TeacherSubject(Group group, Teacher_Subject teacherSubject, byte hours)
+        public Group_TeacherSubject(Group group, Teacher_Subject teacherSubject, byte hours, byte id = 1)
         {
-            id = ++ID;
+            if (id == 0)
+                this.id = 0;
+            else
+                this.id = ++ID;
             this.group = group;
             this.teacherSubject = teacherSubject;
             this.hours = hours;
@@ -50,21 +53,15 @@ namespace ProjectSTSlore
         {
             return $"Group_TeacherSubject chain: id - {id}, id of teacher-subject chain - {teacherSubject.id}, id of teacher - {teacherSubject.teacher.id}, id of subject - {teacherSubject.subject.id}, id of group - {group.id}, quantity of study hours for this group - {hours}";
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void ChangeProperty([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 
     public class DBGroup_TeacherSubjects : IDB<Group_TeacherSubject>
     {
         public DBGroup_TeacherSubjects() : base() { }
 
-        public override void Add(Group_TeacherSubject newGroup_TeacherSubject)
+        public override void AddWithoutCheck(Group_TeacherSubject newGroup_TeacherSubject)
         {
-            if (!Check(newGroup_TeacherSubject)) return;
-            base.Add(newGroup_TeacherSubject);
+            base.AddWithoutCheck(newGroup_TeacherSubject);
             var students = from t in (MainProgram.students as DBStudents)
                            where t.@group == newGroup_TeacherSubject.@group
                            select t;
@@ -89,7 +86,7 @@ namespace ProjectSTSlore
         {
             for (int i = 0; i < (MainProgram.marks as DBMarks).Count();)
             {
-                if ((MainProgram.marks as DBMarks)[i, false].subjectForMarks.id == entity.id)
+                if ((MainProgram.marks as DBMarks)[i].subjectForMarks.id == entity.id)
                 {
                     (MainProgram.marks as DBMarks).SoftRemove(i);
                     continue;

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Teacher_Subject : Entity, INotifyPropertyChanged
+    public class Teacher_Subject : Entity
     {
         private static uint ID = 0;
 
@@ -29,9 +29,12 @@ namespace ProjectSTSlore
             }
         }
 
-        public Teacher_Subject(Subject subject, Teacher teacher)
+        public Teacher_Subject(Subject subject, Teacher teacher, byte id = 1)
         {
-            id = ++ID;
+            if (id == 0)
+                this.id = 0;
+            else
+                this.id = ++ID;
             this.subject = subject;
             this.teacher = teacher;
         }
@@ -39,20 +42,15 @@ namespace ProjectSTSlore
         {
             return $"Teacher-Subject chain: id - {id}, id of subject - {subject.id}, id of teacher - {teacher.id}";
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void ChangeProperty([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 
     public class DBTeacher_Subjects : IDB<Teacher_Subject>
     {
         public DBTeacher_Subjects() : base() { }
 
-        public override void Add(Teacher_Subject newTeacher_Subject)
+        public override void AddWithoutCheck(Teacher_Subject newTeacher_Subject)
         {
-            base.Add(newTeacher_Subject);
+            base.AddWithoutCheck(newTeacher_Subject);
         }
 
         public override bool Check(Teacher_Subject newTeacher_Subject)
@@ -70,9 +68,9 @@ namespace ProjectSTSlore
         {
             for (int i = 0; i < (MainProgram.teacher_subjects as DBTeacher_Subjects).Count(); i++)
             {
-                if ((MainProgram.teacher_subjects as DBTeacher_Subjects)[i, false].id == entity.id)
+                if ((MainProgram.teacher_subjects as DBTeacher_Subjects)[i].id == entity.id)
                 {
-                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i, false].teacher = MainProgram.defaultTeacher;
+                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher = MainProgram.defaultTeacher;
                     break;
                 }
             }

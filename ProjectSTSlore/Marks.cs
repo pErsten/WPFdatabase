@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Marks : Entity, INotifyPropertyChanged
+    public class Marks : Entity
     {
         public static uint ID = 0;
         public int markPosition;
@@ -40,9 +40,12 @@ namespace ProjectSTSlore
             }
         }
 
-        public Marks(Student student, Group_TeacherSubject subjectForMarks)
+        public Marks(Student student, Group_TeacherSubject subjectForMarks, byte id = 1)
         {
-            id = ++ID;
+            if (id == 0)
+                this.id = 0;
+            else
+                this.id = ++ID;
             markPosition = 0;
             this.student = student;
             this.subjectForMarks = subjectForMarks;
@@ -72,20 +75,15 @@ namespace ProjectSTSlore
         {
             return $"Marks: student name and surname - {student.person.name} {student.person.surname}, student id - {student.id}, chain id - {subjectForMarks.id}, subject id - {subjectForMarks.teacherSubject.subject.id}, subject name - {subjectForMarks.teacherSubject.subject.subjectName}";
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void ChangeProperty([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 
     public class DBMarks : IDB<Marks>
     {
         public DBMarks() : base() { }
 
-        public override void Add(Marks newMarks)
+        public override void AddWithoutCheck(Marks newMarks)
         {
-            base.Add(newMarks);
+            base.AddWithoutCheck(newMarks);
         }
         public override bool Check(Marks newMarks)
         {

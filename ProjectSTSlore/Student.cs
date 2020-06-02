@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
-    public class Student : Entity, INotifyPropertyChanged
+    public class Student : Entity
     {
         private static uint ID = 0;
 
@@ -29,17 +29,30 @@ namespace ProjectSTSlore
             }
         }
 
-        public Student(string name, string surname, string patronymic, Group group, string address = default)
+        public Student(string name, string surname, string patronymic, Group group, string address = default, byte id = 1)
         {
-            (MainProgram.persons as DBPersons).Add(new Person(name, surname, patronymic, address));
-            id = ++ID;
-            this.group = group;
-            person = (MainProgram.persons as DBPersons).Last();
+            if (id == 0)
+            {
+                /*Entity.errorMessage("this way is temporary forbidden, use another constructor");
+                return;*/
+                person = new Person(name, surname, patronymic, address, 0);
+                this.group = group;
+            }
+            else
+            {
+                (MainProgram.persons as DBPersons).Add(new Person(name, surname, patronymic, address));
+                this.id = ++ID;
+                this.group = group;
+                person = (MainProgram.persons as DBPersons).Last();
+            }
         }
 
-        public Student(Person person, Group group)
+        public Student(Person person, Group group, byte id = 1)
         {
-            id = ++ID;
+            if (id == 0)
+                this.id = 0;
+            else
+                this.id = ++ID;
             this.group = group;
             this.person = person;
         }
@@ -48,22 +61,16 @@ namespace ProjectSTSlore
         {
             return $"Student: name - {person.name}, surname - {person.surname}, patronymic - {person.patronymic}, address - {person.address ?? "none"}, group - {group.groupNumber}, group id - {group.id}";
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void ChangeProperty([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 
     public class DBStudents : IDB<Student>
     {
         public DBStudents() : base() { }
 
-        public override void Add(Student newStudent)
+        public override void AddWithoutCheck(Student newStudent)
         {
-            if (!Check(newStudent)) return;
             newStudent.person.personRole = PersonRole.STUDENT;
-            base.Add(newStudent);
+            base.AddWithoutCheck(newStudent);
             var groups = from t in (MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects)
                          where t.@group == newStudent.@group
                          select t;
@@ -88,7 +95,7 @@ namespace ProjectSTSlore
             entity.person.personRole = PersonRole.NONE;
             for (int i = 0; i < (MainProgram.marks as IDB<Marks>).Count();)
             {
-                if ((MainProgram.marks as DBMarks)[i, false].student.id == entity.id)
+                if ((MainProgram.marks as DBMarks)[i].student.id == entity.id)
                 {
                     (MainProgram.marks as DBMarks).SoftRemove(i);
                     continue;

@@ -32,10 +32,13 @@
         </TabControl.Resources>
         <TabItem Header="Groups">
             <StackPanel>
-                <ListView ItemsSource="{Binding groups}"
+                <ListView x:Name="GroupsListView"
+                          ItemsSource="{Binding groups}"
                           HorizontalAlignment="Left"
                           ItemContainerStyle="{StaticResource ItemIterator}"
-                          SelectedItem="{Binding SelectedGroup, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedIndex="{Binding SelectedGroupIndex}"
+                          SelectedItem="{Binding SelectedGroup}"
+                          SelectionMode="Single"
                           AlternationCount="2"
                           Width="500">
                     <ListView.View>
@@ -44,7 +47,7 @@
                             <GridViewColumn Header="GroupNumber" Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=groupNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=groupNumber}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -53,6 +56,7 @@
                 </ListView>
                 <Button x:Name="groupAdd" Content="Add" Command="{Binding AddGroup}"/>
                 <Button x:Name="groupEdit" Content="Edit" Command="{Binding EditGroup}"/>
+                <Button x:Name="groupDelete" Content="Delete" Command="{Binding DeleteGroup}" CommandParameter="{Binding SelectedGroup}"/>
             </StackPanel>
         </TabItem>
         <TabItem Header="Students">
@@ -67,28 +71,28 @@
                         <GridViewColumn Header="GroupNumber" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=group.groupNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=group.groupNumber}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Header="Name" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.name, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Header="Surname" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.surname, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.surname}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Header="Patronymic" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.patronymic, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.patronymic}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
