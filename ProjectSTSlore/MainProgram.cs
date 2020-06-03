@@ -27,7 +27,6 @@ namespace ProjectSTSlore
         public static Student defaultStudent = new Student(defaultPerson, defaultGroup, 0);
 
         //here are the class fields
-        private int selectedGroupIndex;
         private Group selectedGroup;
         public Group SelectedGroup
         {
@@ -35,15 +34,6 @@ namespace ProjectSTSlore
             set
             {
                 selectedGroup = value;
-                ChangeProperty();
-            }
-        }
-        public int SelectedGroupIndex
-        {
-            get { return selectedGroupIndex; }
-            set
-            {
-                selectedGroupIndex = value;
                 ChangeProperty();
             }
         }
@@ -73,13 +63,12 @@ namespace ProjectSTSlore
                 return editGroup ??
                 (editGroup = new CommandClass(obj =>
                 {
-                    Group group = new Group(SelectedGroup.groupNumber, 0);
-
+                    Group group = new Group((obj as Group).groupNumber, 0);
                     GroupWindow groupWindow = new GroupWindow(group);
                     groupWindow.ShowDialog();
                     if (groupWindow.group != null)
-                        SelectedGroup.groupNumber = groupWindow.group.groupNumber;
-                },(obj) => SelectedGroup != null));
+                        (obj as Group).groupNumber = groupWindow.group.groupNumber;
+                },(obj) => obj != null));
             }
         }
         public CommandClass DeleteGroup

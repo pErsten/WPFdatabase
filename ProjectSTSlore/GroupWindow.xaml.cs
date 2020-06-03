@@ -18,7 +18,7 @@ namespace ProjectSTSlore
     /// <summary>
     /// Логика взаимодействия для GroupWindow.xaml
     /// </summary>
-    public partial class GroupWindow : Window, IDialogueWindow, INotifyPropertyChanged
+    public partial class GroupWindow : Window, IDialogueWindow
     {
         public Group group;
         public GroupWindow(Group group)
@@ -28,12 +28,6 @@ namespace ProjectSTSlore
             this.group = new Group(group.groupNumber);
             GroupWindow_GroupNumber.Text = group.groupNumber.ToString();
             this.Closed += Cancel_Click;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void ChangeProperty([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
         public void Submit_Click(object sender, RoutedEventArgs e)

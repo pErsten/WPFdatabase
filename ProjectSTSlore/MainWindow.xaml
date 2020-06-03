@@ -10,6 +10,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ListViewResource.xaml"/>
+                <ResourceDictionary Source="AddEditDeleteButtons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -31,20 +32,39 @@
             </Style>
         </TabControl.Resources>
         <TabItem Header="Groups">
-            <StackPanel>
+            <Grid x:Name="GroupsGrid" Background="BlanchedAlmond">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="0.15*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{StaticResource AddEditDeleteStyle}" Grid.Row="0" x:Name="groupAdd" Content="Add" Command="{Binding AddGroup}"/>
+                    <Button Style="{StaticResource AddEditDeleteStyle}" Grid.Row="1" x:Name="groupEdit" Content="Edit" Command="{Binding EditGroup}" CommandParameter="{Binding SelectedGroup}"/>
+                    <Button Style="{StaticResource AddEditDeleteStyle}" Grid.Row="2" x:Name="groupDelete" Content="Delete" Command="{Binding DeleteGroup}" CommandParameter="{Binding SelectedGroup}"/>
+                </Grid>
                 <ListView x:Name="GroupsListView"
+                          BorderThickness="0"
                           ItemsSource="{Binding groups}"
-                          HorizontalAlignment="Left"
                           ItemContainerStyle="{StaticResource ItemIterator}"
-                          SelectedIndex="{Binding SelectedGroupIndex}"
                           SelectedItem="{Binding SelectedGroup}"
                           SelectionMode="Single"
-                          AlternationCount="2"
-                          Width="500">
+                          Grid.Row="1"
+                          Width="{Binding ElementName=GroupsGrid, Path=ActualWidth}"
+                          AlternationCount="2">
                     <ListView.View>
                         <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
                                   ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
-                            <GridViewColumn Header="GroupNumber" Width="120">
+                            <GridViewColumn Header="GroupNumber" Width="{Binding ElementName=GroupsListView, Path=ActualWidth}">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=groupNumber}"/>
@@ -54,14 +74,10 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button x:Name="groupAdd" Content="Add" Command="{Binding AddGroup}"/>
-                <Button x:Name="groupEdit" Content="Edit" Command="{Binding EditGroup}"/>
-                <Button x:Name="groupDelete" Content="Delete" Command="{Binding DeleteGroup}" CommandParameter="{Binding SelectedGroup}"/>
-            </StackPanel>
+            </Grid>
         </TabItem>
         <TabItem Header="Students">
             <ListView ItemsSource="{Binding students}"
-                      HorizontalAlignment="Left"
                       ItemContainerStyle="{StaticResource ItemIterator}"
                       AlternationCount="2"
                       Width="500">
@@ -102,7 +118,6 @@
         </TabItem>
         <TabItem Header="Teachers">
             <ListView ItemsSource="{Binding teachers}"
-                      HorizontalAlignment="Left"
                       ItemContainerStyle="{StaticResource ItemIterator}"
                       AlternationCount="2"
                       Width="500">
@@ -136,7 +151,6 @@
         </TabItem>
         <TabItem Header="Subjects">
             <ListView ItemsSource="{Binding subjects}"
-                      HorizontalAlignment="Left"
                       ItemContainerStyle="{StaticResource ItemIterator}"
                       AlternationCount="2"
                       Width="500">
