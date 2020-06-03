@@ -5,23 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectSTSlore"
         mc:Ignorable="d"
-        Title="GroupWindow" Height="150" Width="400">
-    <Grid Margin="30, 0, 30, 0">
+        Title="GroupWindow" Height="130" Width="400" AllowsTransparency="True" WindowStyle="None" Style="{DynamicResource DialogueWindow}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonStyles.xaml"/>
+                <ResourceDictionary Source="DialogueResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Number of the group:" FontWeight="Bold" Margin="10"/>
-        <TextBox Grid.Row="1" x:Name="GroupWindow_GroupNumber"/>
+        <TextBlock Grid.Row="0" Text="Number of the group:" Style="{StaticResource DialogueTextBlock}"/>
+        <TextBox Grid.Row="1" x:Name="GroupWindow_GroupNumber" Style="{StaticResource DialogueTextBox}"/>
         <Grid Grid.Row="2" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="OK" IsDefault="True" Click="Submit_Click"/>
-            <Button Grid.Column="2" Content="Cancel" IsCancel="True" Click="Cancel_Click"/>
+            <Button Grid.Column="0" Style="{StaticResource SubmitButton}" Content="OK" IsDefault="True" Click="Submit_Click"/>
+            <Button Grid.Column="2" Style="{StaticResource SubmitButton}" Content="Cancel" IsCancel="True" Click="Cancel_Click"/>
         </Grid>
     </Grid>
 </Window>

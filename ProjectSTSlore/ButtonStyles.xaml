@@ -2,23 +2,23 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ProjectSTSlore">
 
-    <Style x:Key="AddEditDeleteStyle" TargetType="Button">
-        <Setter Property="Grid.Column" Value="2"/>
+    <Style x:Key="ButtonStyle" TargetType="Button">
         <Setter Property="Margin" Value="0, 3, 5, 3"/>
-        <Setter Property="Width" Value="50"/>
-        <Setter Property="MinHeight" Value="25"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="FontFamily" Value="Mangal"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Background" Value="GhostWhite"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="5"
-                            BorderBrush="{TemplateBinding Background}">
+                            Width="{TemplateBinding Width}"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Center">
@@ -40,5 +40,15 @@
                 <Setter Property="Cursor" Value="Hand"/>
             </MultiTrigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="SubmitButton" BasedOn="{StaticResource ButtonStyle}" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style x:Key="AddEditDeleteButton" BasedOn="{StaticResource ButtonStyle}" TargetType="Button">
+        <Setter Property="Grid.Column" Value="2"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="MinHeight" Value="25"/>
     </Style>
 </ResourceDictionary>

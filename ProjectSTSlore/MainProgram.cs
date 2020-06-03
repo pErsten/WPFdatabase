@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ProjectSTSlore
@@ -39,6 +40,23 @@ namespace ProjectSTSlore
         }
 
         //commands
+        /*private CommandClass sortColumnGroup;
+        public CommandClass SortColumnGroup
+        {
+            get
+            {
+                return sortColumnGroup ??
+                (sortColumnGroup = new CommandClass(obj =>
+                {
+                    (obj as DBGroups).OrderBy(x => x.(col))
+                }));
+            }
+        }*/
+        /*private void SortColumnGroup(object sender, SortDescription e)
+        {
+            (groups as DBGroups).OrderBy(x => x.((sender as GridViewColumnHeader).Tag.ToString()));
+        }*/
+
         private CommandClass addGroup;
         private CommandClass editGroup;
         private CommandClass deleteGroup;
@@ -100,6 +118,7 @@ namespace ProjectSTSlore
             (groups as DBGroups).Add(new Group(371));
             (groups as DBGroups).Add(new Group(372));
             (groups as DBGroups).Add(new Group(351));
+            (groups as DBGroups).Add(new Group(491));
 
             //(groups as DBGroups).RemoveById(1);
 
@@ -111,13 +130,13 @@ namespace ProjectSTSlore
             (students as DBStudents).Add(new Student("Vlad", "Pahnenko", "Alexandrovich", (groups as DBGroups)[0]));
             (students as DBStudents).Add(new Student("Artem", "Letych", "Anatolievich", (groups as DBGroups)[0]));
             (students as DBStudents).Add(new Student("Vlad", "Skrishevskiy", "Valdemarovich", (groups as DBGroups)[0], "in the house"));
-            (students as DBStudents).Add(new Student("Vlad", "Artemenko", "Oleksandrovich", (groups as DBGroups)[0]));
             (students as DBStudents).Add(new Student("Acakiy", "Laptev", "Acakievich", (groups as DBGroups)[1]));
             (students as DBStudents).Add(new Student("Seraphim", "Tapochkin", "Mihailovich", (groups as DBGroups)[1]));
             (students as DBStudents).Add(new Student("Nikodim", "Polochkin", "Alexandrovich", (groups as DBGroups)[2]));
             (students as DBStudents).Add(new Student("Ricardo", "Milos", "Artiomovich", (groups as DBGroups)[2]));
             (students as DBStudents).Add(new Student("Marpha", "Stulieva", "Davidova", (groups as DBGroups)[4]));
             (students as DBStudents).Add(new Student("David", "Nauoutboukov", "Nicodimovich", (groups as DBGroups)[4]));
+            (students as DBStudents).Add(new Student("Vlad", "Artemenko", "Oleksandrovich", (groups as DBGroups)[5]));
             
             (teachers as DBTeachers).Add(new Teacher("o", "hfdg", "hgd"));
             (teachers as DBTeachers).Add(new Teacher("a", "hfdg", "hgd"));
@@ -181,8 +200,8 @@ namespace ProjectSTSlore
             Console.WriteLine();
             Console.WriteLine();
 
-            (subjects as DBSubjects).Remove((subjects as DBSubjects)[1]);
-            (students as DBStudents).Remove((students as DBStudents)[2]);
+            //(subjects as DBSubjects).Remove((subjects as DBSubjects)[1]);
+            //(students as DBStudents).Remove((students as DBStudents)[2]);
 
             foreach (var elem in teacher_subjects)
                 Console.WriteLine(elem);

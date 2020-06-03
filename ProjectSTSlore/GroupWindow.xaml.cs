@@ -30,6 +30,8 @@ namespace ProjectSTSlore
             this.Closed += Cancel_Click;
         }
 
+        private string GroupNumberText { get; set; }
+
         public void Submit_Click(object sender, RoutedEventArgs e)
         {
             int groupNumber;

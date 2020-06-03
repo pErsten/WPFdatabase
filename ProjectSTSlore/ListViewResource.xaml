@@ -108,4 +108,13 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
+
+    <Style TargetType="ListView" x:Key="ListViewStyle">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ItemIterator}"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="AlternationCount" Value="2"/>
+        <Setter Property="Grid.Row" Value="1"/>
+    </Style>
 </ResourceDictionary>

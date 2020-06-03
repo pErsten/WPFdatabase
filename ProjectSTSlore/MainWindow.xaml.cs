@@ -28,5 +28,10 @@ namespace ProjectSTSlore
 
             DataContext = mainProgram;
         }
+
+        private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("ponis");
+        }
     }
 }

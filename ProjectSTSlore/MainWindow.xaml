@@ -10,7 +10,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ListViewResource.xaml"/>
-                <ResourceDictionary Source="AddEditDeleteButtons.xaml"/>
+                <ResourceDictionary Source="ButtonStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -32,12 +32,12 @@
             </Style>
         </TabControl.Resources>
         <TabItem Header="Groups">
-            <Grid x:Name="GroupsGrid" Background="BlanchedAlmond">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition MinHeight="100" Height="0.35*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid>
+                <Grid Background="BlanchedAlmond">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.15*"/>
                         <RowDefinition Height="0.15*"/>
@@ -48,23 +48,18 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Style="{StaticResource AddEditDeleteStyle}" Grid.Row="0" x:Name="groupAdd" Content="Add" Command="{Binding AddGroup}"/>
-                    <Button Style="{StaticResource AddEditDeleteStyle}" Grid.Row="1" x:Name="groupEdit" Content="Edit" Command="{Binding EditGroup}" CommandParameter="{Binding SelectedGroup}"/>
-                    <Button Style="{StaticResource AddEditDeleteStyle}" Grid.Row="2" x:Name="groupDelete" Content="Delete" Command="{Binding DeleteGroup}" CommandParameter="{Binding SelectedGroup}"/>
+                    <Button Style="{StaticResource AddEditDeleteButton}" Grid.Row="0" x:Name="groupAdd" Content="Add" Command="{Binding AddGroup}"/>
+                    <Button Style="{StaticResource AddEditDeleteButton}" Grid.Row="1" x:Name="groupEdit" Content="Edit" Command="{Binding EditGroup}" CommandParameter="{Binding SelectedGroup}"/>
+                    <Button Style="{StaticResource AddEditDeleteButton}" Grid.Row="2" x:Name="groupDelete" Content="Delete" Command="{Binding DeleteGroup}" CommandParameter="{Binding SelectedGroup}"/>
                 </Grid>
                 <ListView x:Name="GroupsListView"
-                          BorderThickness="0"
                           ItemsSource="{Binding groups}"
-                          ItemContainerStyle="{StaticResource ItemIterator}"
                           SelectedItem="{Binding SelectedGroup}"
-                          SelectionMode="Single"
-                          Grid.Row="1"
-                          Width="{Binding ElementName=GroupsGrid, Path=ActualWidth}"
-                          AlternationCount="2">
+                          Style="{StaticResource ListViewStyle}">
                     <ListView.View>
                         <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
                                   ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
-                            <GridViewColumn Header="GroupNumber" Width="{Binding ElementName=GroupsListView, Path=ActualWidth}">
+                            <GridViewColumn Width="{Binding ElementName=GroupsListView, Path=ActualWidth}" Header="GroupNumber">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=groupNumber}"/>
