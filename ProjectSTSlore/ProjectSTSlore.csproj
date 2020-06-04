@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon />
+    <ApplicationIcon>Caracalla.ico</ApplicationIcon>
     <StartupObject />
     <Win32Resource />
     <NoWin32Manifest>true</NoWin32Manifest>

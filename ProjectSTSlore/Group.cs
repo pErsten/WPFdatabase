@@ -8,8 +8,8 @@ namespace ProjectSTSlore
     {
         private static uint ID = 0;
 
-        private int _groupNumber;
-        public int groupNumber
+        private int? _groupNumber;
+        public int? groupNumber
         {
             get { return _groupNumber; }
             set
@@ -19,7 +19,7 @@ namespace ProjectSTSlore
             }
         }
 
-        public Group(int groupNumber, byte id = 1)
+        public Group(int? groupNumber, byte id = 1)
         {
             if (id == 0)
                 this.id = 0;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectSTSlore"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Human Resources DB" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

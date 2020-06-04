@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectSTSlore"
         mc:Ignorable="d"
-        Title="GroupWindow" Height="130" Width="400" AllowsTransparency="True" WindowStyle="None" Style="{DynamicResource DialogueWindow}">
+        Title="GroupWindow" Height="130" Width="400" Style="{DynamicResource DialogueWindow}" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -10,7 +10,7 @@ namespace ProjectSTSlore
 
         private Teacher_Subject _teacherSubject;
         private Group _group;
-        private byte _hours;
+        private byte? _hours;
         public Teacher_Subject teacherSubject
         {
             get { return _teacherSubject; }
@@ -29,7 +29,7 @@ namespace ProjectSTSlore
                 ChangeProperty();
             }
         }
-        public byte hours
+        public byte? hours
         {
             get { return _hours; }
             set
@@ -39,7 +39,7 @@ namespace ProjectSTSlore
             }
         }
 
-        public Group_TeacherSubject(Group group, Teacher_Subject teacherSubject, byte hours, byte id = 1)
+        public Group_TeacherSubject(Group group, Teacher_Subject teacherSubject, byte? hours, byte id = 1)
         {
             if (id == 0)
                 this.id = 0;

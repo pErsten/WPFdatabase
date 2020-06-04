@@ -3,22 +3,22 @@
                     xmlns:local="clr-namespace:ProjectSTSlore">
     
     <Style TargetType="Window" x:Key="DialogueWindow">
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="ShowInTaskbar" Value="False"/>
+        <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Window">
-                    <Border x:Name="GroupDialogueBorder">
+                    <Border x:Name="GroupDialogueBorder"
+                            Background="MediumVioletRed"
+                            BorderThickness="0"
+                            CornerRadius="20"
+                            Padding="5">
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           VerticalAlignment="Stretch"
                                           HorizontalAlignment="Stretch">
                         </ContentPresenter>
-                        <Border.Style>
-                            <Style TargetType="Border">
-                                <Setter Property="Background" Value="MediumVioletRed"/>
-                                <Setter Property="BorderThickness" Value="0"/>
-                                <Setter Property="CornerRadius" Value="20"/>
-                                <Setter Property="Padding" Value="5"/>
-                            </Style>
-                        </Border.Style>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -29,6 +29,7 @@
         <Setter Property="BorderThickness" Value="0,0,0,3"/>
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="MaxLines" Value="1"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="Background" Value="{Binding Source={StaticResource ResourceKey=DialogueWindow}, Path=Background}"/>
     </Style>
 

@@ -30,8 +30,6 @@ namespace ProjectSTSlore
             this.Closed += Cancel_Click;
         }
 
-        private string GroupNumberText { get; set; }
-
         public void Submit_Click(object sender, RoutedEventArgs e)
         {
             int groupNumber;
@@ -71,6 +69,11 @@ namespace ProjectSTSlore
         public void Cancel_Click(object sender, EventArgs e)
         {
             group = null;
+        }
+
+        public void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

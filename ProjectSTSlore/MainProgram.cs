@@ -40,23 +40,6 @@ namespace ProjectSTSlore
         }
 
         //commands
-        /*private CommandClass sortColumnGroup;
-        public CommandClass SortColumnGroup
-        {
-            get
-            {
-                return sortColumnGroup ??
-                (sortColumnGroup = new CommandClass(obj =>
-                {
-                    (obj as DBGroups).OrderBy(x => x.(col))
-                }));
-            }
-        }*/
-        /*private void SortColumnGroup(object sender, SortDescription e)
-        {
-            (groups as DBGroups).OrderBy(x => x.((sender as GridViewColumnHeader).Tag.ToString()));
-        }*/
-
         private CommandClass addGroup;
         private CommandClass editGroup;
         private CommandClass deleteGroup;

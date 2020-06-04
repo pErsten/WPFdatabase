@@ -49,7 +49,7 @@ namespace ProjectSTSlore
             markPosition = 0;
             this.student = student;
             this.subjectForMarks = subjectForMarks;
-            marksList = new List<byte>(subjectForMarks.hours);//пока кол-во оценок прямо зависит от часов отведенного обучению предмета
+            marksList = new List<byte>(subjectForMarks.hours ?? 0);//пока кол-во оценок прямо зависит от часов отведенного обучению предмета
         }
         public void AddMark(byte mark)//добавляем оценку в конец списка
         {
