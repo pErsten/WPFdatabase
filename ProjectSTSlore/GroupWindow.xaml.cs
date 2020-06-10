@@ -26,7 +26,7 @@ namespace ProjectSTSlore
             InitializeComponent();
 
             this.group = new Group(group.groupNumber);
-            GroupWindow_GroupNumber.Text = group.groupNumber.ToString();
+            GroupWindow_GroupNumber.Text = (group.groupNumber != null) ? group.groupNumber.ToString() : null;
             this.Closed += Cancel_Click;
         }
 

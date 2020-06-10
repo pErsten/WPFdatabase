@@ -59,13 +59,7 @@
                     <ListView.View>
                         <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
                                   ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
-                            <GridViewColumn Width="{Binding ElementName=GroupsListView, Path=ActualWidth}" Header="GroupNumber">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=groupNumber}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
+                            <GridViewColumn Width="{Binding ElementName=GroupsListView, Path=ActualWidth}" Header="GroupNumber" DisplayMemberBinding="{Binding Path=groupNumber}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -79,34 +73,10 @@
                 <ListView.View>
                     <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
                               ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
-                        <GridViewColumn Header="GroupNumber" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=group.groupNumber}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Name" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.name}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Surname" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.surname}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Patronymic" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.patronymic}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn Header="GroupNumber" Width="120" DisplayMemberBinding="{Binding Path=group.groupNumber}" />
+                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Path=person.name}"/>
+                        <GridViewColumn Header="Surname" Width="120" DisplayMemberBinding="{Binding Path=person.surname}"/>
+                        <GridViewColumn Header="Patronymic" Width="120" DisplayMemberBinding="{Binding Path=person.patronymic}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -119,27 +89,9 @@
                 <ListView.View>
                     <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
                               ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
-                        <GridViewColumn Header="Name" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.name, UpdateSourceTrigger=PropertyChanged}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Surname" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.surname, UpdateSourceTrigger=PropertyChanged}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Patronymic" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=person.patronymic, UpdateSourceTrigger=PropertyChanged}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Path=person.name}"/>
+                        <GridViewColumn Header="Surname" Width="120" DisplayMemberBinding="{Binding Path=person.surname}"/>
+                        <GridViewColumn Header="Patronymic" Width="120" DisplayMemberBinding="{Binding Path=person.patronymic}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -152,13 +104,7 @@
                 <ListView.View>
                     <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
                               ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
-                        <GridViewColumn Header="Subject" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Foreground="Black" HorizontalAlignment="Left" Text="{Binding Path=subjectName, UpdateSourceTrigger=PropertyChanged}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn Header="Subject" Width="120" DisplayMemberBinding="{Binding Path=subjectName}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

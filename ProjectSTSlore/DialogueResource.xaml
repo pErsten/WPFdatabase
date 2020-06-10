@@ -11,10 +11,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Window">
                     <Border x:Name="GroupDialogueBorder"
-                            Background="MediumVioletRed"
+                            Background="LightSlateGray"
                             BorderThickness="0"
-                            CornerRadius="20"
-                            Padding="5">
+                            CornerRadius="10"
+                            Padding="0">
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           VerticalAlignment="Stretch"
                                           HorizontalAlignment="Stretch">
@@ -24,16 +24,51 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <Style TargetType="TextBox" x:Key="DialogueTextBox">
-        <Setter Property="BorderThickness" Value="0,0,0,3"/>
+
+    <Style TargetType="TextBox" x:Key="SourceDialogueTextBox">
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="MaxLines" Value="1"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
         <Setter Property="FontSize" Value="18"/>
-        <Setter Property="Background" Value="{Binding Source={StaticResource ResourceKey=DialogueWindow}, Path=Background}"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
+    <Style TargetType="TextBox" x:Key="DialogueTextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <TextBox Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}" Panel.ZIndex="2" Style="{StaticResource SourceDialogueTextBox}"/>
+                        <TextBox Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Tag}" IsReadOnly="True" Panel.ZIndex="1" BorderThickness="0,0,0,3">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox" BasedOn="{StaticResource SourceDialogueTextBox}">
+                                    <Setter Property="Foreground" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text}" Value=""/>
+                                                <!--Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=IsFocused, Mode=OneTime}" Value="False">
+                                                    FOR SOME REASON THIS SHIT DOESN'T WANT TO WORK PROPERLY
+                                                    but maybe it's even better now
+                                                </-->
+                                            </MultiDataTrigger.Conditions>
+                                            <MultiDataTrigger.Setters>
+                                                <Setter Property="Foreground" Value="DarkGray"/>
+                                            </MultiDataTrigger.Setters>
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="DialogueTextBlock">
+        <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="Margin" Value="10"/>
     </Style>
