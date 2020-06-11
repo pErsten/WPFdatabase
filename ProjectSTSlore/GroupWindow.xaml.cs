@@ -26,6 +26,7 @@ namespace ProjectSTSlore
             InitializeComponent();
 
             this.group = new Group(group.groupNumber);
+            //hmm, yes, floor made out of floor
             GroupWindow_GroupNumber.Text = (group.groupNumber != null) ? group.groupNumber.ToString() : null;
             this.Closed += Cancel_Click;
         }

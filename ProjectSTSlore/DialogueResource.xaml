@@ -31,6 +31,7 @@
         <Setter Property="MaxLines" Value="1"/>
         <Setter Property="Margin" Value="10,0,10,0"/>
         <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="Mangal"/>
         <Setter Property="Background" Value="Transparent"/>
     </Style>
     
@@ -44,6 +45,7 @@
                             <TextBox.Style>
                                 <Style TargetType="TextBox" BasedOn="{StaticResource SourceDialogueTextBox}">
                                     <Setter Property="Foreground" Value="Transparent"/>
+                                    <Setter Property="FontStyle" Value="Italic"/>
                                     <Style.Triggers>
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
@@ -70,6 +72,7 @@
     <Style TargetType="TextBlock" x:Key="DialogueTextBlock">
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="Margin" Value="10"/>
     </Style>
 

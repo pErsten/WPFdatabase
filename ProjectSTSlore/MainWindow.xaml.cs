@@ -23,7 +23,6 @@ namespace ProjectSTSlore
         public MainProgram mainProgram = new MainProgram();//no static fields in mainwindow!
         public MainWindow()
         {
-            
             InitializeComponent();
 
             DataContext = mainProgram;

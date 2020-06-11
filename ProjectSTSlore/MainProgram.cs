@@ -11,7 +11,9 @@ namespace ProjectSTSlore
 {
     public class MainProgram : INotifyPropertyChanged
     {
-        //a shit ton of collections
+        /*
+         * a shit ton of collections
+         */
         public static ObservableCollection<Student> students { set; get; } = new DBStudents();//this looks terrifying, but it's the only way the program works
         public static ObservableCollection<Teacher> teachers { set; get; } = new DBTeachers();
         public static ObservableCollection<Subject> subjects { set; get; } = new DBSubjects();
@@ -21,13 +23,29 @@ namespace ProjectSTSlore
         public static ObservableCollection<Marks> marks { set; get; } = new DBMarks();
         public static ObservableCollection<Person> persons { set; get; } = new DBPersons();
 
-        //default entities, for the sake of having a default user
+        /*
+         * Dialogue windows
+         */
+        //every dialogue window must set it's owner as MainWindow everytime it receves a new value
+        private GroupWindow _groupWindow;
+        public GroupWindow groupWindow
+        {
+            get { return _groupWindow; }
+            set { _groupWindow = value; _groupWindow.Owner = Application.Current.MainWindow; }
+        }
+
+        /*
+         * default entities, for the sake of having a default user
+         */
+        //ending parameter in every default entity must be zero
         public static Group defaultGroup = new Group(default, 0);
         public static Person defaultPerson = new Person(default, default, default, default, 0);
         public static Teacher defaultTeacher = new Teacher(defaultPerson, 0);
         public static Student defaultStudent = new Student(defaultPerson, defaultGroup, 0);
 
-        //here are the class fields
+        /*
+         * here are the class fields
+         */
         private Group selectedGroup;
         public Group SelectedGroup
         {
@@ -39,10 +57,17 @@ namespace ProjectSTSlore
             }
         }
 
-        //commands
+        /*
+         * commands
+         */
         private CommandClass addGroup;
         private CommandClass editGroup;
         private CommandClass deleteGroup;
+        //these commands send a copy of original value to dialogue when entity is added or edited
+        //the dialogue then manipulate with the copy of entity
+        //and after sends it back
+        //command checks if it's null(when user cancelled this operation) and if it is - remains status quo
+        //vice versa - the value is either added or changed in the original list of entities
         public CommandClass AddGroup
         {
             get
@@ -50,7 +75,7 @@ namespace ProjectSTSlore
                 return addGroup ??
                 (addGroup = new CommandClass(obj =>
                 {
-                    GroupWindow groupWindow = new GroupWindow(defaultGroup);//sending default value to class, where it creates copy of it
+                    groupWindow = new GroupWindow(defaultGroup);//sending default value to class, where it creates copy of it
                     groupWindow.ShowDialog();//and if it's all okay with new group(no exceptions)
                     if (groupWindow.group != null)
                         (groups as DBGroups).AddWithoutCheck(groupWindow.group);//it adds to the group collection(GroupWindow checks if it's a valid value, hence check is now useless)
@@ -65,7 +90,7 @@ namespace ProjectSTSlore
                 (editGroup = new CommandClass(obj =>
                 {
                     Group group = new Group((obj as Group).groupNumber, 0);
-                    GroupWindow groupWindow = new GroupWindow(group);
+                    groupWindow = new GroupWindow(group);
                     groupWindow.ShowDialog();
                     if (groupWindow.group != null)
                         (obj as Group).groupNumber = groupWindow.group.groupNumber;
@@ -84,7 +109,9 @@ namespace ProjectSTSlore
             }
         }
 
-        //other stuff
+        /*
+         * other stuff
+         */
         public static void Message(string message)
         {
             //throw new Exception(message);
@@ -155,7 +182,7 @@ namespace ProjectSTSlore
             (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[2], 32));
             (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject((groups as DBGroups)[1], (teacher_subjects as DBTeacher_Subjects)[4], 32));
 
-            Console.WriteLine((students as DBStudents).Count);
+            /*Console.WriteLine((students as DBStudents).Count);
 
             foreach (var elem in teacher_subjects)
                 Console.WriteLine(elem);
@@ -225,10 +252,12 @@ namespace ProjectSTSlore
                 {
                     Console.WriteLine($"\t{sebject.subject.subjectName}");
                 }
-            }
+            }*/
         }
 
-        //a default event for this program to work
+        /*
+         * a default event for this program to work
+         */
         public event PropertyChangedEventHandler PropertyChanged;
         public void ChangeProperty([CallerMemberName]string prop = "")
         {
