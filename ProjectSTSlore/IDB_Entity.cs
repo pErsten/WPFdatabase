@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace ProjectSTSlore
 {
@@ -12,16 +12,8 @@ namespace ProjectSTSlore
         public delegate void StringDelegate(string message);
         public static StringDelegate errorMessage = MainProgram.Message;
 
-        private uint _id;
-        public uint id
-        {
-            get { return _id; }
-            set
-            {
-                _id = value;
-                ChangeProperty();
-            }
-        }
+        [Key]
+        public int id { get; set; }
 
         public abstract override string ToString();
         public void Dispose()
@@ -33,6 +25,87 @@ namespace ProjectSTSlore
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+    }
+
+    public abstract class SetDB<T> //TODO: make this as the realisation from IEnumerator for binding purposes
+    {
+        public HumanResourcesDBContext HRDBContext;
+
+        protected SetDB(HumanResourcesDBContext HRDBContext)
+        {
+            this.HRDBContext = HRDBContext;
+        }
+        public void Add(T item)
+        {
+            if (!Check(item)) return;
+            AddWithoutCheck(item);
+        }
+
+        public abstract void AddWithoutCheck(T item);
+        /* Realisation of this method should look like this:
+         * 
+           {
+              HRDBContext.[Name_of_DbSet].Add(item);
+              HRDBContext.SaveChanges();
+           }
+         *
+         */
+
+        public abstract bool Check(T newItem);
+
+        public abstract T this[int index] { get;set; }
+        /* Realisation of this method should look like this:
+         * 
+           {
+               get
+               {
+                   if (index >= 0 && index < HRDBContext.[Name_of_DbSet].Count())
+                       return HRDBContext.[Name_of_DbSet].ToList()[index];
+                   else
+                       return null;
+               }
+               set
+               {
+                   if (index >= 0 && index < HRDBContext.[Name_of_DbSet].Count())
+                   {
+                       HRDBContext.[Name_of_DbSet].ToList()[index] = value;
+                       HRDBContext.SaveChanges();
+                   }
+               }
+           }
+         *
+         */
+
+        public abstract void SoftRemove(int index);
+        /* Realisation of this method should look like this:
+         * 
+           {
+               HRDBContext.[Name_of_DbSet].ToList().RemoveAt(index);
+               HRDBContext.SaveChanges();
+           }
+         *
+         */
+
+        protected abstract void DeepRemove(T entity);
+
+        public abstract void Remove(T item);
+        /* Realisation of this method should look like this:
+         *
+             {
+                 HRDBContext.[Name_of_DbSet].Remove(item);
+                 HRDBContext.SaveChanges();
+             }
+         * 
+         */
+
+        public abstract BindingList<T> Get();
+        /* Realisation of this method should look like this:
+         *
+             {
+                 return HRDBContext.[Name_of_DbSet].Local.ToBindingList();
+             }
+         * 
+         */
     }
     public abstract class IDB<T> : ObservableCollection<T> where T : Entity
     {
@@ -46,7 +119,9 @@ namespace ProjectSTSlore
         {
             base.Add(item);
         }
+
         public abstract bool Check(T newItem);
+
         public new T this[int index]
         {
             get
@@ -64,7 +139,7 @@ namespace ProjectSTSlore
                         return null;
                     }
                 }
-                else */
+                else*/
                 if (index >= 0 && index < Items.Count)
                     return Items[index];
                 else
@@ -84,12 +159,26 @@ namespace ProjectSTSlore
                     Items[index] = value;
             }
         }
-        public void SoftRemove(int index)
+
+        public virtual void SoftRemove(int index)
         {
             Items.RemoveAt(index);
         }
+
         protected abstract void DeepRemove(T entity);
-        public new void Remove(T item)
+
+        public new virtual void Remove(T item)
+        {
+            try
+            {
+                DeepRemove(item);
+            }
+            catch
+            {
+                Entity.errorMessage("Error: trying to delete wrong object" + Items.Count());
+            }
+        }
+        /*public new void Remove(T item)
         {
             try
             {
@@ -100,7 +189,7 @@ namespace ProjectSTSlore
             {
                 Entity.errorMessage("Error: trying to delete wrong object" + Items.Count());
             }
-        }
+        }*/
         /*public void RemoveByIndex(int index)
         {
             if (index >= 0 && index < Items.Count())

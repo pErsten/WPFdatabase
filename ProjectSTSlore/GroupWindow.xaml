@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectSTSlore"
         mc:Ignorable="d"
-        Title="GroupWindow" Height="130" Width="400" Style="{DynamicResource DialogueWindow}" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterOwner">
+        Title="GroupWindow" Height="230" Width="400" Style="{DynamicResource DialogueWindow}" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,10 +19,22 @@
             <RowDefinition/>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Number of the group:" Style="{StaticResource DialogueTextBlock}"/>
         <TextBox Grid.Row="1" x:Name="GroupWindow_GroupNumber" Style="{StaticResource DialogueTextBox}" Tag="Please, enter it here"/>
-        <Grid Grid.Row="2" Margin="5">
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource AddImageButton}" Content="Select Image" Grid.RowSpan="2" Click="OpenImage_Click"/>
+        </Grid>
+        <Grid Grid.Row="3" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

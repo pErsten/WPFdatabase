@@ -1,12 +1,10 @@
-﻿using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Linq;
 
 namespace ProjectSTSlore
 {
     public class Teacher_Subject : Entity
     {
-        private static uint ID = 0;
+        private static int ID = 0;
 
         private Subject _subject;
         private Teacher _teacher;
@@ -38,6 +36,8 @@ namespace ProjectSTSlore
             this.subject = subject;
             this.teacher = teacher;
         }
+        public Teacher_Subject() { }
+
         public override string ToString()
         {
             return $"Teacher-Subject chain: id - {id}, id of subject - {subject.id}, id of teacher - {teacher.id}";
@@ -70,7 +70,7 @@ namespace ProjectSTSlore
             {
                 if ((MainProgram.teacher_subjects as DBTeacher_Subjects)[i].id == entity.id)
                 {
-                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher = MainProgram.defaultTeacher;
+                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher = null;
                     break;
                 }
             }

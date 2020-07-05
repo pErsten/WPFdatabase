@@ -1,17 +1,17 @@
-﻿using System.ComponentModel;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectSTSlore
 {
     public class Marks : Entity
     {
-        public static uint ID = 0;
+        public static int ID = 0;
         public int markPosition;
 
         private List<byte> _marksList;
         private Student _student;
         private Group_TeacherSubject _subjectForMarks;
+        [NotMapped]
         public List<byte> marksList
         {
             get { return _marksList; }
@@ -51,6 +51,8 @@ namespace ProjectSTSlore
             this.subjectForMarks = subjectForMarks;
             marksList = new List<byte>(subjectForMarks.hours ?? 0);//пока кол-во оценок прямо зависит от часов отведенного обучению предмета
         }
+        public Marks() { }
+
         public void AddMark(byte mark)//добавляем оценку в конец списка
         {
             if (markPosition < subjectForMarks.hours)

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectSTSlore"
+        xmlns:sort="clr-namespace:Dependencies"
         mc:Ignorable="d"
         Title="Human Resources DB" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -11,6 +12,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ListViewResource.xaml"/>
                 <ResourceDictionary Source="ButtonStyles.xaml"/>
+                <ResourceDictionary Source="TextBlockResource.xaml"/>
+                <ResourceDictionary Source="BorderResource.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -34,7 +37,7 @@
         <TabItem Header="Groups">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition MinHeight="100" Height="0.35*"/>
+                    <RowDefinition MinHeight="100" Height="0.35*" MaxHeight="150"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid Background="BlanchedAlmond">
@@ -47,26 +50,42 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+                    <TextBlock Text="Group Tab" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBlockStyle}" FontSize="18" FontWeight="Bold"/>
+                    <Grid Grid.RowSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ContentControl Grid.Row="1" Style="{StaticResource IconStyle}" Tag="{Binding SelectedGroup.image}"/>
+                    </Grid>
+                    <TextBlock Text="Id:" Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBlockStyle}"/>
+                    <TextBlock Text="Number:" Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBlockStyle}"/>
+                    <TextBlock Text="{Binding SelectedGroup.id}" Grid.Column="1" Grid.Row="2" Style="{StaticResource TextBlockStyle}"/>
+                    <TextBlock Text="{Binding SelectedGroup.groupNumber}" Grid.Column="2" Grid.Row="2" Style="{StaticResource TextBlockStyle}"/>
                     <Button Style="{StaticResource AddEditDeleteButton}" Grid.Row="0" x:Name="groupAdd" Content="Add" Command="{Binding AddGroup}"/>
                     <Button Style="{StaticResource AddEditDeleteButton}" Grid.Row="1" x:Name="groupEdit" Content="Edit" Command="{Binding EditGroup}" CommandParameter="{Binding SelectedGroup}"/>
                     <Button Style="{StaticResource AddEditDeleteButton}" Grid.Row="2" x:Name="groupDelete" Content="Delete" Command="{Binding DeleteGroup}" CommandParameter="{Binding SelectedGroup}"/>
                 </Grid>
                 <ListView x:Name="GroupsListView"
-                          ItemsSource="{Binding groups}"
+                          ItemsSource="{Binding}"
                           SelectedItem="{Binding SelectedGroup}"
+                          sort:SortDependency.EnableSortProperty="True"
                           Style="{StaticResource ListViewStyle}">
                     <ListView.View>
                         <GridView ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
                                   ColumnHeaderContainerStyle="{StaticResource myControlTemplateStyle}">
-                            <GridViewColumn Width="{Binding ElementName=GroupsListView, Path=ActualWidth}" Header="GroupNumber" DisplayMemberBinding="{Binding Path=groupNumber}"/>
+                            <GridViewColumn Width="{Binding ElementName=GroupsListView, Path=ActualWidth}" Header="GroupNumber" DisplayMemberBinding="{Binding Path=groupNumber}" sort:SortDependency.SortProperty="groupNumber"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
             </Grid>
         </TabItem>
         <TabItem Header="Students">
-            <ListView ItemsSource="{Binding students}"
+            <ListView x:Name="StudentsListView"
+                      ItemsSource="{Binding}"
                       ItemContainerStyle="{StaticResource ItemIterator}"
                       AlternationCount="2"
                       Width="500">

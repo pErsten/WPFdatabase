@@ -1,12 +1,10 @@
-﻿using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Linq;
 
 namespace ProjectSTSlore
 {
     public class Group_TeacherSubject : Entity
     {
-        private static uint ID = 0;
+        private static int ID = 0;
 
         private Teacher_Subject _teacherSubject;
         private Group _group;
@@ -49,6 +47,7 @@ namespace ProjectSTSlore
             this.teacherSubject = teacherSubject;
             this.hours = hours;
         }
+        public Group_TeacherSubject() { }
         public override string ToString()
         {
             return $"Group_TeacherSubject chain: id - {id}, id of teacher-subject chain - {teacherSubject.id}, id of teacher - {teacherSubject.teacher.id}, id of subject - {teacherSubject.subject.id}, id of group - {group.id}, quantity of study hours for this group - {hours}";
@@ -62,7 +61,7 @@ namespace ProjectSTSlore
         public override void AddWithoutCheck(Group_TeacherSubject newGroup_TeacherSubject)
         {
             base.AddWithoutCheck(newGroup_TeacherSubject);
-            var students = from t in (MainProgram.students as DBStudents)
+            var students = from t in MainProgram.students.Get()
                            where t.@group == newGroup_TeacherSubject.@group
                            select t;
             foreach (var student in students)

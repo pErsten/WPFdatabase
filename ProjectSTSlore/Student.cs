@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
     public class Student : Entity
     {
-        private static uint ID = 0;
+        private static int ID = 0;
 
         private Group _group;
         private Person _person;
@@ -40,10 +39,10 @@ namespace ProjectSTSlore
             }
             else
             {
-                (MainProgram.persons as DBPersons).Add(new Person(name, surname, patronymic, address));
+                MainProgram.persons.Add(new Person { name = name, surname = surname, patronymic = patronymic, address = address });
                 this.id = ++ID;
                 this.group = group;
-                person = (MainProgram.persons as DBPersons).Last();
+                person = MainProgram.persons.Get().Last();
             }
         }
 
@@ -56,6 +55,7 @@ namespace ProjectSTSlore
             this.group = group;
             this.person = person;
         }
+        public Student() { }
 
         public override string ToString()
         {
@@ -63,7 +63,85 @@ namespace ProjectSTSlore
         }
     }
 
-    public class DBStudents : IDB<Student>
+    public class DBStudents : SetDB<Student>
+    {
+        public DBStudents(HumanResourcesDBContext HRDBContext) : base(HRDBContext) { }
+
+        public override Student this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < HRDBContext.Students.Count())
+                    return HRDBContext.Students.ToList()[index];
+                else
+                    return null;
+            }
+            set
+            {
+                if (index >= 0 && index < HRDBContext.Students.Count())
+                {
+                    HRDBContext.Students.ToList()[index] = value;
+                    HRDBContext.SaveChanges();
+                }
+            }
+        }
+
+        public override void AddWithoutCheck(Student newStudent)
+        {
+            newStudent.person.personRole = PersonRole.STUDENT;
+            HRDBContext.Students.Add(newStudent);
+            HRDBContext.SaveChanges();
+            var groups = from t in (MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects)
+                         where t.@group == newStudent.@group
+                         select t;
+            foreach (var group in groups)
+            {
+                (MainProgram.marks as DBMarks).Add(new Marks(newStudent, group));
+            }
+        }
+
+        public override bool Check(Student newStudent)
+        {
+            if (newStudent.person.personRole != PersonRole.NONE)
+            {
+                Entity.errorMessage("Error: trying to add used in database person as student");
+                return false;
+            }
+            return true;
+        }
+
+        public override void Remove(Student item)
+        {
+            HRDBContext.Students.Remove(item);
+            HRDBContext.SaveChanges();
+        }
+
+        public override void SoftRemove(int index)
+        {
+            HRDBContext.Students.ToList().RemoveAt(index);
+            HRDBContext.SaveChanges();
+        }
+
+        protected override void DeepRemove(Student entity)//удаление студента со всеми его оценками
+        {
+            entity.person.personRole = PersonRole.NONE;
+            for (int i = 0; i < (MainProgram.marks as IDB<Marks>).Count();)
+            {
+                if ((MainProgram.marks as DBMarks)[i].student.id == entity.id)
+                {
+                    (MainProgram.marks as DBMarks).SoftRemove(i);
+                    continue;
+                }
+                i++;
+            }
+        }
+
+        public override BindingList<Student> Get()
+        {
+            return HRDBContext.Students.Local.ToBindingList();
+        }
+    }
+    /*public class DBStudents : IDB<Student>
     {
         public DBStudents() : base() { }
 
@@ -103,5 +181,5 @@ namespace ProjectSTSlore
                 i++;
             }
         }
-    }
+    }*/
 }

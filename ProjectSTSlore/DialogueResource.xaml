@@ -26,6 +26,7 @@
     </Style>
 
     <Style TargetType="TextBox" x:Key="SourceDialogueTextBox">
+        <Setter Property="Height" Value="30"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="MaxLines" Value="1"/>
@@ -41,7 +42,7 @@
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
                         <TextBox Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}" Panel.ZIndex="2" Style="{StaticResource SourceDialogueTextBox}"/>
-                        <TextBox Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Tag}" IsReadOnly="True" Panel.ZIndex="1" BorderThickness="0,0,0,3">
+                        <TextBox Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Tag}" IsReadOnly="True" Panel.ZIndex="1" BorderThickness="2">
                             <TextBox.Style>
                                 <Style TargetType="TextBox" BasedOn="{StaticResource SourceDialogueTextBox}">
                                     <Setter Property="Foreground" Value="Transparent"/>

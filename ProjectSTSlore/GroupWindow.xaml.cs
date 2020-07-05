@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
+using Microsoft.Win32;
+using System.IO;
 
 namespace ProjectSTSlore
 {
@@ -24,11 +18,12 @@ namespace ProjectSTSlore
         public GroupWindow(Group group)
         {
             InitializeComponent();
-
-            this.group = new Group(group.groupNumber);
-            //hmm, yes, floor made out of floor
-            GroupWindow_GroupNumber.Text = (group.groupNumber != null) ? group.groupNumber.ToString() : null;
-            this.Closed += Cancel_Click;
+            if (group != null)
+                this.group = new Group(group.groupNumber, group.image, 0);
+            else
+                this.group = new Group(null, null, 0);
+            GroupWindow_GroupNumber.Text = this.group.groupNumber.ToString();
+            Closed += Cancel_Click;
         }
 
         public void Submit_Click(object sender, RoutedEventArgs e)
@@ -58,15 +53,34 @@ namespace ProjectSTSlore
                 }
             }
             group.groupNumber = groupNumber;
-            if (!(MainProgram.groups as DBGroups).Check(group))
+            if (!MainProgram.groups.Check(group))
             {
-                group.groupNumber = default;
+                group.groupNumber = null;
                 return;
             }
             this.Closed -= Cancel_Click;
             this.DialogResult = true;
         }
 
+        public void OpenImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                if (!String.IsNullOrEmpty(openFileDialog.FileName))
+                {
+                    try
+                    {
+                        new FileInfo(openFileDialog.FileName).CopyTo($"{MainProgram.homeDirectory}\\images", false);
+                    }
+                    catch
+                    {
+                        Entity.errorMessage("Error: file with such name is already exist, rename this");
+                    }
+                }
+            }
+        }
+        
         public void Cancel_Click(object sender, EventArgs e)
         {
             group = null;

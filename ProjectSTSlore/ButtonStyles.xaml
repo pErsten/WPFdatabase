@@ -46,8 +46,13 @@
         <Setter Property="Margin" Value="5"/>
     </Style>
 
+    <Style x:Key="AddImageButton" BasedOn="{StaticResource SourceButtonStyle}" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="10,10,5,10"/>
+    </Style>
+    
     <Style x:Key="AddEditDeleteButton" BasedOn="{StaticResource SourceButtonStyle}" TargetType="Button">
-        <Setter Property="Grid.Column" Value="2"/>
+        <Setter Property="Grid.Column" Value="3"/>
         <Setter Property="Margin" Value="0, 3, 5, 3"/>
         <Setter Property="Width" Value="50"/>
         <Setter Property="MinHeight" Value="25"/>

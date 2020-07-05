@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
@@ -13,7 +12,7 @@ namespace ProjectSTSlore
 
     public class Person : Entity
     {
-        private static uint ID = 0;
+        private static int ID = 0;
         private string _name;
         private string _surname;
         private string _patronymic;
@@ -76,24 +75,52 @@ namespace ProjectSTSlore
             this.patronymic = patronymic;
             this.address = address;
         }
+        public Person() { }
+
         public override string ToString()
         {
             return $"Person: name - {name}, surname - {surname}, patronymic - {patronymic}, address - {address ?? "none"}, role - {personRole}";
         }
     }
 
-    public class DBPersons : IDB<Person>
+    public class DBPersons : SetDB<Person>
     {
-        public DBPersons() : base() { }
+        public DBPersons(HumanResourcesDBContext HRDBContext) : base(HRDBContext) { }
 
-        public override void AddWithoutCheck(Person newPerson)
+        public override void AddWithoutCheck(Person item)
         {
-            base.AddWithoutCheck(newPerson);
+            HRDBContext.Persons.Add(item);
+            HRDBContext.SaveChanges();
+        }
+
+        public override Person this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < HRDBContext.Persons.Count())
+                    return HRDBContext.Persons.ToList()[index];
+                else
+                    return null;
+            }
+            set
+            {
+                if (index >= 0 && index < HRDBContext.Persons.Count())
+                {
+                    HRDBContext.Persons.ToList()[index] = value;
+                    HRDBContext.SaveChanges();
+                }
+            }
+        }
+
+        public override void SoftRemove(int index)
+        {
+            HRDBContext.Persons.ToList().RemoveAt(index);
+            HRDBContext.SaveChanges();
         }
 
         public override bool Check(Person newPerson)
         {
-            foreach (Person listedPerson in Items)
+            foreach (Person listedPerson in HRDBContext.Persons.ToList())
                 if (listedPerson.surname == newPerson.surname && listedPerson.name == newPerson.name && listedPerson.patronymic == newPerson.patronymic)
                 {
                     Entity.errorMessage("Error: trying to add person with the same name, surname and patronymic");
@@ -107,7 +134,7 @@ namespace ProjectSTSlore
             if (entity.personRole == PersonRole.NONE)
                 return;
             if (entity.personRole == PersonRole.STUDENT)
-                for (int i = 0; i < (MainProgram.students as DBStudents).Count(); i++)
+                for (int i = 0; i < MainProgram.students.Get().Count(); i++)
                 {
                     if ((MainProgram.students as DBStudents)[i].person.id == entity.id)
                     {
@@ -124,6 +151,17 @@ namespace ProjectSTSlore
                         return;
                     }
                 }
+        }
+
+        public override void Remove(Person item)
+        {
+            HRDBContext.Persons.Remove(item);
+            HRDBContext.SaveChanges();
+        }
+
+        public override BindingList<Person> Get()
+        {
+            return HRDBContext.Persons.Local.ToBindingList();
         }
     }
 }

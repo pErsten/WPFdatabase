@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace ProjectSTSlore
 {
     public class Teacher : Entity
     {
-        private static uint ID = 0;
+        private static int ID = 0;
 
         private Person _person;
         public Person person
@@ -29,8 +28,8 @@ namespace ProjectSTSlore
             else
             {
                 this.id = ++ID;
-                (MainProgram.persons as DBPersons).Add(new Person(name, surname, patronymic, address));
-                person = (MainProgram.persons as DBPersons).Last();
+                MainProgram.persons.Add(new Person { name = name, surname = surname, patronymic = patronymic, address = address });
+                person = MainProgram.persons.Get().Last();
             }
         }
         public Teacher(Person Person, byte id = 1)
@@ -42,6 +41,8 @@ namespace ProjectSTSlore
             this.person = Person;
 
         }
+        public Teacher() { }
+
         public override string ToString()
         {
             return $"Teacher: name - {person.name}, surname - {person.surname}, patronymic - {person.patronymic}, id - {id}";
@@ -71,12 +72,12 @@ namespace ProjectSTSlore
         protected override void DeepRemove(Teacher entity)//удаление учителя и замена на учителя по-умолчанию в связанных таблицах
         {
             entity.person.personRole = PersonRole.NONE;
-            entity.person = MainProgram.defaultPerson;//не помню для чего это нужно, убери и проверь это как нибудь
+            //entity.person = null;//не помню для чего это нужно, убери и проверь это как нибудь
             for (int i = 0; i < (MainProgram.teacher_subjects as DBTeacher_Subjects).Count();)
             {
                 if ((MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher.id == entity.id)
                 {
-                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher = MainProgram.defaultTeacher;
+                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher = null;
                     continue;
                 }
                 i++;

@@ -1,12 +1,10 @@
-﻿using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Linq;
 
 namespace ProjectSTSlore
 {
     public class Subject : Entity
     {
-        private static uint ID = 0;
+        private static int ID = 0;
 
         private string _subjectName;
         public string subjectName
@@ -27,6 +25,8 @@ namespace ProjectSTSlore
                 this.id = ++ID;
             this.subjectName = subjectName;
         }
+        public Subject() { }
+
         public override string ToString()
         {
             return $"Subject: name - {subjectName}, id - {id}";

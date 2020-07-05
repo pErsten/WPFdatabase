@@ -1,0 +1,1264 @@
+Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200701090633_ThirdMigration'.Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+DROP TABLE "Groups";Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20200701090633_ThirdMigration', '3.1.5');Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200701091213_FourthMigration'.Executed DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20200701091213_FourthMigration', '3.1.5');Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200703162545_FifthMigration'.Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200703162545_FifthMigration'.Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200703162545_FifthMigration'.Failed executing DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+ALTER TABLE "groups" RENAME TO "Groups";Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200703162545_FifthMigration'.Executed DbCommand (79ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Person" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Person" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Student" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Student" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Student_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Student_Person_personid" FOREIGN KEY ("personid") REFERENCES "Person" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Person_personid" FOREIGN KEY ("personid") REFERENCES "Person" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Student_studentid" FOREIGN KEY ("studentid") REFERENCES "Student" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Student_groupid" ON "Student" ("groupid");Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Student_personid" ON "Student" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20200703162545_FifthMigration', '3.1.5');Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200703171821_SixthMigration'.Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200703171821_SixthMigration'.Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200703171821_SixthMigration'.Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200703171821_SixthMigration'.Executed DbCommand (134ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+ALTER TABLE "Student" RENAME TO "Students";Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+DROP INDEX "IX_Student_personid";
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+DROP INDEX "IX_Student_groupid";
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20200703171821_SixthMigration', '3.1.5');Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200704063136_SeventhMigration'.Executed DbCommand (122ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+ALTER TABLE "Person" RENAME TO "Persons";Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20200704063136_SeventhMigration', '3.1.5');Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (198ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (244ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200630194043_FirstMigration'.Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (215ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (88ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (135ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200630194043_FirstMigration'.Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (104ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (200ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (80ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);Executed DbCommand (24ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200630194043_FirstMigration'.Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (89ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (134ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (301ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (132ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (153ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);Executed DbCommand (48ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (46ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200630194043_FirstMigration'.Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (230ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (238ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (89ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200630194043_FirstMigration'.Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (115ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (88ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";No migrations were applied. The database is already up to date.Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (172ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (73ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+PRAGMA journal_mode = 'wal';Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (105ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200705122723_FirstMigration'.Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Entity Framework Core 3.1.5 initialized 'HumanResourcesDBContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: CommandTimeout=600 Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (90ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";Applying migration '20200705122723_FirstMigration'.Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Groups" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Groups" PRIMARY KEY AUTOINCREMENT,
+    "groupNumber" INTEGER NULL,
+    "image" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Persons" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Persons" PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NULL,
+    "surname" TEXT NULL,
+    "patronymic" TEXT NULL,
+    "address" TEXT NULL,
+    "personRole" INTEGER NOT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectName" TEXT NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Students" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Students" PRIMARY KEY AUTOINCREMENT,
+    "groupid" INTEGER NULL,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Students_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Students_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher" PRIMARY KEY AUTOINCREMENT,
+    "personid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Persons_personid" FOREIGN KEY ("personid") REFERENCES "Persons" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Teacher_Subject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Teacher_Subject" PRIMARY KEY AUTOINCREMENT,
+    "subjectid" INTEGER NULL,
+    "teacherid" INTEGER NULL,
+    CONSTRAINT "FK_Teacher_Subject_Subject_subjectid" FOREIGN KEY ("subjectid") REFERENCES "Subject" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Teacher_Subject_Teacher_teacherid" FOREIGN KEY ("teacherid") REFERENCES "Teacher" ("id") ON DELETE SET NULL
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Group_TeacherSubject" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Group_TeacherSubject" PRIMARY KEY AUTOINCREMENT,
+    "teacherSubjectid" INTEGER NULL,
+    "groupid" INTEGER NULL,
+    "hours" INTEGER NULL,
+    CONSTRAINT "FK_Group_TeacherSubject_Groups_groupid" FOREIGN KEY ("groupid") REFERENCES "Groups" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid" FOREIGN KEY ("teacherSubjectid") REFERENCES "Teacher_Subject" ("id") ON DELETE CASCADE
+);Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE TABLE "Marks" (
+    "id" INTEGER NOT NULL CONSTRAINT "PK_Marks" PRIMARY KEY AUTOINCREMENT,
+    "studentid" INTEGER NULL,
+    "subjectForMarksid" INTEGER NULL,
+    CONSTRAINT "FK_Marks_Students_studentid" FOREIGN KEY ("studentid") REFERENCES "Students" ("id") ON DELETE CASCADE,
+    CONSTRAINT "FK_Marks_Group_TeacherSubject_subjectForMarksid" FOREIGN KEY ("subjectForMarksid") REFERENCES "Group_TeacherSubject" ("id") ON DELETE CASCADE
+);Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_groupid" ON "Group_TeacherSubject" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Group_TeacherSubject_teacherSubjectid" ON "Group_TeacherSubject" ("teacherSubjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_studentid" ON "Marks" ("studentid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Marks_subjectForMarksid" ON "Marks" ("subjectForMarksid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_groupid" ON "Students" ("groupid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Students_personid" ON "Students" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_personid" ON "Teacher" ("personid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_subjectid" ON "Teacher_Subject" ("subjectid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+CREATE INDEX "IX_Teacher_Subject_teacherid" ON "Teacher_Subject" ("teacherid");Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20200705122723_FirstMigration', '3.1.5');
