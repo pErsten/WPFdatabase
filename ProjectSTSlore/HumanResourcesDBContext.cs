@@ -20,10 +20,6 @@ namespace ProjectSTSlore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            /*if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-7KCTEMM\\SQLEXPRESS;Database=EntityFrameworkDB;Trusted_Connection=True;");
-            }*/
             optionsBuilder.UseLoggerFactory(MyLoggerFactory);
         }
 
@@ -45,13 +41,9 @@ namespace ProjectSTSlore
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-        //* устанавливаем фабрику логгера
         public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder =>
         {
-            builder.AddProvider(new Logger());    //* указываем наш провайдер логгирования
-            /*builder.AddFilter((category, level) => category == DbLoggerCategory.Database.Command.Name
-                        && level == LogLevel.Information)   //* adding constraints for logs(in this case only "Command" will be in log and with "Information" level of access)
-                    .AddProvider(new MyLoggerProvider());*/
+            builder.AddProvider(new Logger());
         });
     }
 }

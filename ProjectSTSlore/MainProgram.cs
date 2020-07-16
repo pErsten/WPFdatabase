@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using System.Linq;
+using System.Reflection;
 
 namespace ProjectSTSlore
 {
@@ -28,7 +29,7 @@ namespace ProjectSTSlore
         public static ObservableCollection<Marks> marks { set; get; } = new DBMarks();
 
         public static string homeDirectory = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\HumanResourcesDB";
-        static public HumanResourcesDBContext DB { get; set; }
+        public static HumanResourcesDBContext DB { get; set; }
 
         /*
          * Dialogue windows
@@ -116,14 +117,7 @@ namespace ProjectSTSlore
                 (deleteGroup = new CommandClass(obj =>
                 {
                     //(groups as DBGroups).Remove(obj as Group);
-                    Console.WriteLine(obj as Group);
-                    Console.WriteLine("-------------------------");
                     groups.Remove(obj as Group);
-                    foreach (var elem in DB.Groups.ToList())
-                        Console.WriteLine(elem);
-                    Console.WriteLine("-------------------------");
-                    foreach (var elem in DB.Students.ToList())
-                        Console.WriteLine(elem);
                 }, (obj) => obj != null));
             }
         }
@@ -138,32 +132,32 @@ namespace ProjectSTSlore
         }
         public MainProgram()
         {
-            File.AppendAllText("C:\\Users\\Vladislav\\AppData\\Roaming\\HumanResourcesDB\\database\\log.txt", "\n\n\nNew start of application!\n");
-            File.AppendAllText("C:\\Users\\Vladislav\\AppData\\Roaming\\HumanResourcesDB\\database\\log.txt", $"{Directory.GetCurrentDirectory()}");
-            var builder = new ConfigurationBuilder();
-            builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("appsettings.json");
-            var config = builder.Build();
-            string connectionString = config.GetConnectionString("DefaultConnection");
+            DirectoryCreator();
+            File.AppendAllText($"{homeDirectory}\\database\\log.txt", "\n\n\nNew start of application!\n");
+            File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"{Directory.GetCurrentDirectory()}\n");
+            File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"{Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db\n");
+
             var options = new DbContextOptionsBuilder<HumanResourcesDBContext>()
-                .UseSqlite(connectionString)
+                .UseSqlite($"Data Source={homeDirectory}\\database\\HumanResourcesDB.db;")
                 .Options;
 
             DB = new HumanResourcesDBContext(options);
             DB.Groups.Load();
             DB.Students.Load();
             DB.Persons.Load();
+            persons = new DBPersons(DB);
             groups = new DBGroups(DB);
             students = new DBStudents(DB);
-            persons = new DBPersons(DB);
-            DirectoryCreator();
-            StarterPack();
+            if (DB.Groups.Count() == 0)
+                StarterPack();
         }
         private void DirectoryCreator()
         {
             if (!Directory.Exists(homeDirectory))
             {
                 Directory.CreateDirectory(homeDirectory);
+                Directory.CreateDirectory($"{homeDirectory}\\database");
+                File.Copy($"{ Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db", $"{homeDirectory}\\database\\HumanResourcesDB.db", true);
                 Directory.CreateDirectory($"{homeDirectory}\\images");
                 Directory.CreateDirectory($"{homeDirectory}\\temp");
             }
@@ -171,7 +165,7 @@ namespace ProjectSTSlore
         }
         private void StarterPack()
         {
-            /*groups.Add(new Group{ groupNumber = 391, image = $"{homeDirectory}\\images\\391.jpg" });
+            groups.Add(new Group{ groupNumber = 391, image = $"{homeDirectory}\\images\\391.jpg" });
             groups.Add(new Group{ groupNumber = 392});
             groups.Add(new Group{ groupNumber = 371});
             groups.Add(new Group{ groupNumber = 372});
@@ -184,20 +178,22 @@ namespace ProjectSTSlore
             }
 
             //(groups as DBGroups).RemoveById(1);
-
-            persons.Add(new Person { name = "Alex", surname = "Maudza", patronymic = "Romanovich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Misha", surname = "Kadochnikov", patronymic = "Andreevich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "David", surname = "Zhidkov", patronymic = "Sergeevich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Vlad", surname = "Pahnenko", patronymic = "Alexandrovich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Artem", surname = "Letych", patronymic = "Anatolievich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Vlad", surname = "Skrishevskiy", patronymic = "Valdemarovich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Acakiy", surname = "Laptev", patronymic = "Acakievich", address = "in the house", personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Seraphim", surname = "Tapochkin", patronymic = "Mihailovich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Nikodim", surname = "Polochkin", patronymic = "Alexandrovich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Ricardo", surname = "Milos", patronymic = "Artiomovich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Marpha", surname = "Stulieva", patronymic = "Davidova", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "David", surname = "Nauoutboukov", patronymic = "Nicodimovich", address = default, personRole = PersonRole.NONE });
-            persons.Add(new Person { name = "Vlad", surname = "Artemenko", patronymic = "Oleksandrovich", address = default, personRole = PersonRole.NONE });
+            if (DB.Persons.Count() == 0)
+            {
+                persons.Add(new Person { name = "Alex", surname = "Maudza", patronymic = "Romanovich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Misha", surname = "Kadochnikov", patronymic = "Andreevich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "David", surname = "Zhidkov", patronymic = "Sergeevich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Vlad", surname = "Pahnenko", patronymic = "Alexandrovich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Artem", surname = "Letych", patronymic = "Anatolievich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Vlad", surname = "Skrishevskiy", patronymic = "Valdemarovich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Acakiy", surname = "Laptev", patronymic = "Acakievich", address = "in the house", personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Seraphim", surname = "Tapochkin", patronymic = "Mihailovich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Nikodim", surname = "Polochkin", patronymic = "Alexandrovich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Ricardo", surname = "Milos", patronymic = "Artiomovich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Marpha", surname = "Stulieva", patronymic = "Davidova", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "David", surname = "Nauoutboukov", patronymic = "Nicodimovich", address = default, personRole = PersonRole.NONE });
+                persons.Add(new Person { name = "Vlad", surname = "Artemenko", patronymic = "Oleksandrovich", address = default, personRole = PersonRole.NONE });
+            }/**/
 
             students.Add(new Student { person = persons[0], group = groups[0] });
             students.Add(new Student { person = persons[1], group = groups[0] });
