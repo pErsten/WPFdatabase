@@ -4,8 +4,12 @@ using System.Windows.Input;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
+//using System.Drawing;
 using Microsoft.Win32;
 using System.IO;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace ProjectSTSlore
 {
@@ -22,6 +26,9 @@ namespace ProjectSTSlore
                 this.group = new Group(group.groupNumber, group.image, 0);
             else
                 this.group = new Group(null, null, 0);
+
+            if (this.group.image != null)
+                GroupWindow_SelectedImage.Source = ByteArrayToImage(this.group.image);
             GroupWindow_GroupNumber.Text = this.group.groupNumber.ToString();
             Closed += Cancel_Click;
         }
@@ -39,46 +46,54 @@ namespace ProjectSTSlore
                 return;
             }
 
-            if (group.groupNumber == default)//if it was add command
+            if (groupNumber != group.groupNumber)
             {
-
-            }
-            else//if it was edit command
-            {
-                if (groupNumber == group.groupNumber)
+                group.groupNumber = groupNumber;
+                if (!MainProgram.groups.Check(group))
                 {
-                    this.Closed -= Cancel_Click;
-                    this.DialogResult = true;
+                    group = null;
                     return;
                 }
-            }
-            group.groupNumber = groupNumber;
-            if (!MainProgram.groups.Check(group))
-            {
-                group.groupNumber = null;
-                return;
             }
             this.Closed -= Cancel_Click;
             this.DialogResult = true;
         }
 
+        static public byte[] ImageToByteArray(ref OpenFileDialog openFileDialog, byte[] image)
+        {
+            using (var filestream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+            {
+                image = new byte[filestream.Length];
+                filestream.Read(image, 0, Convert.ToInt32(filestream.Length));
+
+                return image;
+            }
+        }
+
+        static public ImageSource ByteArrayToImage(byte[] image)
+        {
+            var bi = new BitmapImage();
+            MemoryStream ms = new MemoryStream(image);
+            bi.BeginInit();
+            bi.StreamSource = ms;
+            bi.EndInit();
+
+            return bi;
+        }
+
         public void OpenImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
+            OpenFileDialog openFileDialog = new OpenFileDialog //setting requirements for search and selecting the file
             {
-                if (!String.IsNullOrEmpty(openFileDialog.FileName))
-                {
-                    try
-                    {
-                        new FileInfo(openFileDialog.FileName).CopyTo($"{MainProgram.homeDirectory}\\images", false);
-                    }
-                    catch
-                    {
-                        Entity.errorMessage("Error: file with such name is already exist, rename this");
-                    }
-                }
-            }
+                CheckFileExists = true,
+                Multiselect = false,
+                Filter = "Images (*.jpg,*.png)|*.jpg;*.png" 
+            };
+
+            if (openFileDialog.ShowDialog() != true || String.IsNullOrEmpty(openFileDialog.FileName)) return; //return if search was canceled or file doesn't have a name 
+
+            group.image = ImageToByteArray(ref openFileDialog, group.image);
+            GroupWindow_SelectedImage.Source = ByteArrayToImage(group.image);
         }
         
         public void Cancel_Click(object sender, EventArgs e)

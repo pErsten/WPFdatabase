@@ -25,8 +25,8 @@ namespace ProjectSTSlore.Migrations
                     b.Property<int?>("groupNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("image")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("image")
+                        .HasColumnType("blob");
 
                     b.HasKey("id");
 

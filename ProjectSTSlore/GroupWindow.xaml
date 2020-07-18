@@ -17,24 +17,23 @@
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Number of the group:" Style="{StaticResource DialogueTextBlock}"/>
-        <TextBox Grid.Row="1" x:Name="GroupWindow_GroupNumber" Style="{StaticResource DialogueTextBox}" Tag="Please, enter it here"/>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Button Style="{StaticResource AddImageButton}" Content="Select Image" Grid.RowSpan="2" Click="OpenImage_Click"/>
-        </Grid>
-        <Grid Grid.Row="3" Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Number of the group:" Style="{StaticResource DialogueTextBlock}"/>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="GroupWindow_GroupNumber" Style="{StaticResource DialogueTextBox}" Tag="Please, enter it here"/>
+        <Button Style="{StaticResource AddImageButton}" Content="Select Image" Grid.RowSpan="2" Grid.Row="2" Click="OpenImage_Click"/>
+        <TextBlock Style="{StaticResource DialogueTextBlock}" Grid.Column="1" Grid.Row="2" Text="Selected Photo:"/>
+        <Image Grid.Column="1" Grid.Row="3" x:Name="GroupWindow_SelectedImage"/>
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="2" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

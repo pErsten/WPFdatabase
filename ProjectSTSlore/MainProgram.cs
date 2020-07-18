@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using System.Linq;
 using System.Reflection;
+using System.Data;
 
 namespace ProjectSTSlore
 {
@@ -98,13 +99,15 @@ namespace ProjectSTSlore
                 return editGroup ??
                 (editGroup = new CommandClass(obj =>
                 {
-                    Group group = new Group((obj as Group).groupNumber, "", 0);
+                    Group group = new Group((obj as Group).groupNumber, (obj as Group).image, 0);
                     groupWindow = new GroupWindow(group);
                     groupWindow.ShowDialog();
                     if (groupWindow.group != null)
                     {
                         (obj as Group).groupNumber = groupWindow.group.groupNumber;
                         (obj as Group).image = groupWindow.group.image;
+                        DB.Groups.Update(obj as Group);
+                        DB.SaveChanges();
                     }
                 }, (obj) => obj != null));
             }
@@ -116,7 +119,6 @@ namespace ProjectSTSlore
                 return deleteGroup ??
                 (deleteGroup = new CommandClass(obj =>
                 {
-                    //(groups as DBGroups).Remove(obj as Group);
                     groups.Remove(obj as Group);
                 }, (obj) => obj != null));
             }
@@ -133,12 +135,13 @@ namespace ProjectSTSlore
         public MainProgram()
         {
             DirectoryCreator();
+
             File.AppendAllText($"{homeDirectory}\\database\\log.txt", "\n\n\nNew start of application!\n");
             File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"{Directory.GetCurrentDirectory()}\n");
             File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"{Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db\n");
 
             var options = new DbContextOptionsBuilder<HumanResourcesDBContext>()
-                .UseSqlite($"Data Source={homeDirectory}\\database\\HumanResourcesDB.db;")
+                .UseSqlite($"Data Source={ Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db;")
                 .Options;
 
             DB = new HumanResourcesDBContext(options);
@@ -153,19 +156,24 @@ namespace ProjectSTSlore
         }
         private void DirectoryCreator()
         {
-            if (!Directory.Exists(homeDirectory))
+            //File.Copy($"{ Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db", $"{homeDirectory}\\database\\HumanResourcesDB.db", true);
+            if (!File.Exists($"{ homeDirectory}\\database\\HumanResourcesDB.db"))
             {
+                Console.WriteLine($"This directory doesn't exist yet - {homeDirectory}");
                 Directory.CreateDirectory(homeDirectory);
                 Directory.CreateDirectory($"{homeDirectory}\\database");
                 File.Copy($"{ Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db", $"{homeDirectory}\\database\\HumanResourcesDB.db", true);
                 Directory.CreateDirectory($"{homeDirectory}\\images");
                 Directory.CreateDirectory($"{homeDirectory}\\temp");
+
+                File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"Now it's created - {homeDirectory}\n");
             }
 
+            File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"This is a home directory - {homeDirectory}\n");
         }
         private void StarterPack()
         {
-            groups.Add(new Group{ groupNumber = 391, image = $"{homeDirectory}\\images\\391.jpg" });
+            groups.Add(new Group{ groupNumber = 391/*, image = $"{homeDirectory}\\images\\391.jpg"*/ });
             groups.Add(new Group{ groupNumber = 392});
             groups.Add(new Group{ groupNumber = 371});
             groups.Add(new Group{ groupNumber = 372});

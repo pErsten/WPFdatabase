@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Windows.Automation;
 using System.Windows.Documents;
@@ -13,7 +14,7 @@ namespace ProjectSTSlore
         private static int ID = 0;
 
         private int? _groupNumber;
-        private string _image;
+        private byte[] _image;
         public int? groupNumber
         {
             get { return _groupNumber; }
@@ -23,7 +24,8 @@ namespace ProjectSTSlore
                 ChangeProperty();
             }
         }
-        public string image
+        [Column(TypeName = "blob")]
+        public byte[] image
         {
             get { return _image; }
             set
@@ -33,7 +35,7 @@ namespace ProjectSTSlore
             }
         }
 
-        public Group(int? groupNumber, string image = "", byte id = 1)
+        public Group(int? groupNumber, byte[] image = null, byte id = 1)
         {
             if (id == 0)
                 this.id = 0;

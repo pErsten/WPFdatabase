@@ -30,7 +30,6 @@
     <Compile Remove="Migrations\20200701094745_FifthMigration.Designer.cs" />
     <Compile Remove="Migrations\20200703161920_FifthMigration.cs" />
     <Compile Remove="Migrations\20200703161920_FifthMigration.Designer.cs" />
-    <Compile Remove="SampleContextFactory.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,6 +56,10 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
   </ItemGroup>
 
   <ItemGroup>
