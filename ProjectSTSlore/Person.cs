@@ -129,7 +129,7 @@ namespace ProjectSTSlore
             return true;
         }
 
-        protected override void DeepRemove(Person entity)//удаление человека вместе с классом содержащий его роль (студент или учитель)
+        /*protected override void DeepRemove(Person entity)//удаление человека вместе с классом содержащий его роль (студент или учитель)
         {
             if (entity.personRole == PersonRole.NONE)
                 return;
@@ -151,7 +151,7 @@ namespace ProjectSTSlore
                         return;
                     }
                 }
-        }
+        }*/
 
         public override void Remove(Person item)
         {

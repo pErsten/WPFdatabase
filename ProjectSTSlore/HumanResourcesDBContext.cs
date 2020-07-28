@@ -7,13 +7,18 @@ namespace ProjectSTSlore
     {
         public DbSet<Group> Groups { set; get; }
         public DbSet<Student> Students { set; get; }
+        public DbSet<Teacher> Teachers { set; get; }
         public DbSet<Person> Persons { set; get; }
+        public DbSet<Subject> Subjects { set; get; }
+        public DbSet<Teacher_Subject> Teacher_Subjects { set; get; }
+        public DbSet<Group_TeacherSubject> Group_TeacherSubjects { set; get; }
+        public DbSet<Marks> Marks { set; get; }
 
         public HumanResourcesDBContext(DbContextOptions<HumanResourcesDBContext> options)
             : base(options)
         {
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
 

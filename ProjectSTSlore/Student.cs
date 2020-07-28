@@ -91,12 +91,12 @@ namespace ProjectSTSlore
             newStudent.person.personRole = PersonRole.STUDENT;
             HRDBContext.Students.Add(newStudent);
             HRDBContext.SaveChanges();
-            var groups = from t in (MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects)
+            var groups = from t in MainProgram.group_teacherSubjects.Get()
                          where t.@group == newStudent.@group
                          select t;
             foreach (var group in groups)
             {
-                (MainProgram.marks as DBMarks).Add(new Marks(newStudent, group));
+                MainProgram.marks.Add(new Marks(newStudent, group));
             }
         }
 
@@ -122,7 +122,7 @@ namespace ProjectSTSlore
             HRDBContext.SaveChanges();
         }
 
-        protected override void DeepRemove(Student entity)//удаление студента со всеми его оценками
+        /*protected override void DeepRemove(Student entity)//удаление студента со всеми его оценками
         {
             entity.person.personRole = PersonRole.NONE;
             for (int i = 0; i < (MainProgram.marks as IDB<Marks>).Count();)
@@ -134,7 +134,7 @@ namespace ProjectSTSlore
                 }
                 i++;
             }
-        }
+        }*/
 
         public override BindingList<Student> Get()
         {

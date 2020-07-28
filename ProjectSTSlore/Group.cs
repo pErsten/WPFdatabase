@@ -100,7 +100,7 @@ namespace ProjectSTSlore
                 }
             return true;
         }
-        protected override void DeepRemove(Group entity)
+        /*protected override void DeepRemove(Group entity)
         {
             for (int i = 0; i < MainProgram.students.Get().Count();)
             {
@@ -120,7 +120,7 @@ namespace ProjectSTSlore
                 }
                 i++;
             }
-        }
+        }*/
 
         public override void Remove(Group item)
         {

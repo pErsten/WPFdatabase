@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 
 namespace ProjectSTSlore
 {
@@ -44,7 +45,78 @@ namespace ProjectSTSlore
         }
     }
 
-    public class DBTeacher_Subjects : IDB<Teacher_Subject>
+    public class DBTeacher_Subjects : SetDB<Teacher_Subject>
+    {
+        public DBTeacher_Subjects(HumanResourcesDBContext HRDBContext) : base(HRDBContext) { }
+
+        public override Teacher_Subject this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < HRDBContext.Teacher_Subjects.Count())
+                    return HRDBContext.Teacher_Subjects.ToList()[index];
+                else
+                    return null;
+            }
+            set
+            {
+                if (index >= 0 && index < HRDBContext.Teacher_Subjects.Count())
+                {
+                    HRDBContext.Teacher_Subjects.ToList()[index] = value;
+                    HRDBContext.SaveChanges();
+                }
+            }
+        }
+
+
+
+        public override void AddWithoutCheck(Teacher_Subject newTeacher_Subject)
+        {
+            HRDBContext.Teacher_Subjects.Add(newTeacher_Subject);
+            HRDBContext.SaveChanges();
+        }
+
+        public override bool Check(Teacher_Subject newTeacher_Subject)
+        {
+            foreach (Teacher_Subject listedTeacher_Subject in HRDBContext.Teacher_Subjects.ToList())
+                if (listedTeacher_Subject.subject.id == newTeacher_Subject.subject.id && listedTeacher_Subject.teacher.id == newTeacher_Subject.teacher.id)
+                {
+                    Entity.errorMessage("Error: trying to add exisiting chain of teachers and subjects");
+                    return false;
+                }
+            return true;
+        }
+
+        public override BindingList<Teacher_Subject> Get()
+        {
+            return HRDBContext.Teacher_Subjects.Local.ToBindingList();
+        }
+
+        public override void Remove(Teacher_Subject item)
+        {
+            HRDBContext.Teacher_Subjects.Remove(item);
+            HRDBContext.SaveChanges();
+        }
+
+        public override void SoftRemove(int index)
+        {
+            HRDBContext.Teacher_Subjects.ToList().RemoveAt(index);
+            HRDBContext.SaveChanges();
+        }
+
+        /*protected override void DeepRemove(Teacher_Subject entity)//удаление связи предмета с учителем и замена на учителя по-умолчанию в связанной таблице
+        {
+            for (int i = 0; i < (MainProgram.teacher_subjects as DBTeacher_Subjects).Count(); i++)
+            {
+                if ((MainProgram.teacher_subjects as DBTeacher_Subjects)[i].id == entity.id)
+                {
+                    (MainProgram.teacher_subjects as DBTeacher_Subjects)[i].teacher = null;
+                    break;
+                }
+            }
+        }*/
+    }
+    /*public class DBTeacher_Subjects : IDB<Teacher_Subject>
     {
         public DBTeacher_Subjects() : base() { }
 
@@ -75,5 +147,5 @@ namespace ProjectSTSlore
                 }
             }
         }
-    }
+    }*/
 }

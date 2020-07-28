@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 
 namespace ProjectSTSlore
 {
@@ -54,7 +55,84 @@ namespace ProjectSTSlore
         }
     }
 
-    public class DBGroup_TeacherSubjects : IDB<Group_TeacherSubject>
+    public class DBGroup_TeacherSubjects : SetDB<Group_TeacherSubject>
+    {
+        public DBGroup_TeacherSubjects(HumanResourcesDBContext HRDBContext) : base(HRDBContext) { }
+
+        public override Group_TeacherSubject this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < HRDBContext.Group_TeacherSubjects.Count())
+                    return HRDBContext.Group_TeacherSubjects.ToList()[index];
+                else
+                    return null;
+            }
+            set
+            {
+                if (index >= 0 && index < HRDBContext.Group_TeacherSubjects.Count())
+                {
+                    HRDBContext.Group_TeacherSubjects.ToList()[index] = value;
+                    HRDBContext.SaveChanges();
+                }
+            }
+        }
+
+        public override void AddWithoutCheck(Group_TeacherSubject newGroup_TeacherSubject)
+        {
+            HRDBContext.Group_TeacherSubjects.Add(newGroup_TeacherSubject);
+            HRDBContext.SaveChanges();
+            var students = from t in MainProgram.students.Get()
+                           where t.@group == newGroup_TeacherSubject.@group
+                           select t;
+            foreach (var student in students)
+            {
+                MainProgram.marks.Add(new Marks(student, newGroup_TeacherSubject));
+            }
+        }
+
+        public override bool Check(Group_TeacherSubject newGroup_TeacherSubject)
+        {
+            foreach (Group_TeacherSubject listedGroup_TeacherSubject in HRDBContext.Group_TeacherSubjects.ToList())
+                if (listedGroup_TeacherSubject.group.id == newGroup_TeacherSubject.group.id && listedGroup_TeacherSubject.teacherSubject.subject.id == newGroup_TeacherSubject.teacherSubject.subject.id)
+                {
+                    Entity.errorMessage("Error: trying to add two same subjects to the same group");
+                    return false;
+                }
+            return true;
+        }
+
+        public override BindingList<Group_TeacherSubject> Get()
+        {
+            return HRDBContext.Group_TeacherSubjects.Local.ToBindingList();
+        }
+
+        public override void Remove(Group_TeacherSubject item)
+        {
+            HRDBContext.Group_TeacherSubjects.Remove(item);
+            HRDBContext.SaveChanges();
+        }
+
+        public override void SoftRemove(int index)
+        {
+            HRDBContext.Group_TeacherSubjects.ToList().RemoveAt(index);
+            HRDBContext.SaveChanges();
+        }
+
+        /*protected override void DeepRemove(Group_TeacherSubject entity)//удаление предмета в группе, вместе со всеми оценками
+        {
+            for (int i = 0; i < (MainProgram.marks as DBMarks).Count();)
+            {
+                if ((MainProgram.marks as DBMarks)[i].subjectForMarks.id == entity.id)
+                {
+                    (MainProgram.marks as DBMarks).SoftRemove(i);
+                    continue;
+                }
+                i++;
+            }
+        }*/
+    }
+    /*public class DBGroup_TeacherSubjects : IDB<Group_TeacherSubject>
     {
         public DBGroup_TeacherSubjects() : base() { }
 
@@ -93,5 +171,5 @@ namespace ProjectSTSlore
                 i++;
             }
         }
-    }
+    }*/
 }

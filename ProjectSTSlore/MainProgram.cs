@@ -23,11 +23,11 @@ namespace ProjectSTSlore
         public static DBGroups groups { set; get; }
         public static DBStudents students { set; get; }//this looks terrifying, but it's the only way the program works
         public static DBPersons persons { set; get; }
-        public static ObservableCollection<Teacher> teachers { set; get; } = new DBTeachers();
-        public static ObservableCollection<Subject> subjects { set; get; } = new DBSubjects();
-        public static ObservableCollection<Group_TeacherSubject> group_teacherSubjects { set; get; } = new DBGroup_TeacherSubjects();
-        public static ObservableCollection<Teacher_Subject> teacher_subjects { set; get; } = new DBTeacher_Subjects();
-        public static ObservableCollection<Marks> marks { set; get; } = new DBMarks();
+        public static DBTeachers teachers { set; get; }
+        public static DBSubjects subjects { set; get; }
+        public static DBGroup_TeacherSubjects group_teacherSubjects { set; get; }
+        public static DBTeacher_Subjects teacher_subjects { set; get; }
+        public static DBMarks marks { set; get; }
 
         public static string homeDirectory = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\HumanResourcesDB";
         public static HumanResourcesDBContext DB { get; set; }
@@ -136,44 +136,46 @@ namespace ProjectSTSlore
         {
             DirectoryCreator();
 
-            File.AppendAllText($"{homeDirectory}\\database\\log.txt", "\n\n\nNew start of application!\n");
-            File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"{Directory.GetCurrentDirectory()}\n");
-            File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"{Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db\n");
+            File.AppendAllText($"{homeDirectory}\\log.txt", "\n\n\nNew start of application!\n");
+            File.AppendAllText($"{homeDirectory}\\log.txt", $"{Directory.GetCurrentDirectory()}\n");
+            File.AppendAllText($"{homeDirectory}\\log.txt", $"{Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db\n");
 
             var options = new DbContextOptionsBuilder<HumanResourcesDBContext>()
-                .UseSqlite($"Data Source={ Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db;")
+                .UseSqlite($"Data Source={homeDirectory}\\HumanResourcesDB.db;")
                 .Options;
-
             DB = new HumanResourcesDBContext(options);
-            DB.Groups.Load();
-            DB.Students.Load();
-            DB.Persons.Load();
+            //DB.Groups.Load();
+            //DB.Students.Load();
+            //DB.Persons.Load();
+
             persons = new DBPersons(DB);
             groups = new DBGroups(DB);
             students = new DBStudents(DB);
-            if (DB.Groups.Count() == 0)
+            teachers = new DBTeachers(DB);
+            marks = new DBMarks(DB);
+            subjects = new DBSubjects(DB);
+            group_teacherSubjects = new DBGroup_TeacherSubjects(DB);
+            teacher_subjects = new DBTeacher_Subjects(DB);
+            //if (DB.Groups.Count() == 0)
                 StarterPack();
         }
         private void DirectoryCreator()
         {
             //File.Copy($"{ Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db", $"{homeDirectory}\\database\\HumanResourcesDB.db", true);
-            if (!File.Exists($"{ homeDirectory}\\database\\HumanResourcesDB.db"))
+            if (!File.Exists($"{ homeDirectory}\\HumanResourcesDB.db"))
             {
                 Console.WriteLine($"This directory doesn't exist yet - {homeDirectory}");
                 Directory.CreateDirectory(homeDirectory);
-                Directory.CreateDirectory($"{homeDirectory}\\database");
-                File.Copy($"{ Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db", $"{homeDirectory}\\database\\HumanResourcesDB.db", true);
-                Directory.CreateDirectory($"{homeDirectory}\\images");
-                Directory.CreateDirectory($"{homeDirectory}\\temp");
+                File.Copy($"{ Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\HumanResourcesDB.db", $"{homeDirectory}\\HumanResourcesDB.db", true);
 
-                File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"Now it's created - {homeDirectory}\n");
+                File.AppendAllText($"{homeDirectory}\\log.txt", $"Now it's created - {homeDirectory}\n");
             }
 
-            File.AppendAllText($"{homeDirectory}\\database\\log.txt", $"This is a home directory - {homeDirectory}\n");
+            File.AppendAllText($"{homeDirectory}\\log.txt", $"This is a home directory - {homeDirectory}\n");
         }
         private void StarterPack()
         {
-            groups.Add(new Group{ groupNumber = 391/*, image = $"{homeDirectory}\\images\\391.jpg"*/ });
+            groups.Add(new Group{ groupNumber = 391});
             groups.Add(new Group{ groupNumber = 392});
             groups.Add(new Group{ groupNumber = 371});
             groups.Add(new Group{ groupNumber = 372});
@@ -201,7 +203,7 @@ namespace ProjectSTSlore
                 persons.Add(new Person { name = "Marpha", surname = "Stulieva", patronymic = "Davidova", address = default, personRole = PersonRole.NONE });
                 persons.Add(new Person { name = "David", surname = "Nauoutboukov", patronymic = "Nicodimovich", address = default, personRole = PersonRole.NONE });
                 persons.Add(new Person { name = "Vlad", surname = "Artemenko", patronymic = "Oleksandrovich", address = default, personRole = PersonRole.NONE });
-            }/**/
+            }
 
             students.Add(new Student { person = persons[0], group = groups[0] });
             students.Add(new Student { person = persons[1], group = groups[0] });
@@ -217,39 +219,39 @@ namespace ProjectSTSlore
             students.Add(new Student { person = persons[11], group = groups[4] });
             students.Add(new Student { person = persons[12], group = groups[5] });/**/
 
-            /*(teachers as DBTeachers).Add(new Teacher("o", "hfdg", "hgd"));
-            (teachers as DBTeachers).Add(new Teacher("a", "hfdg", "hgd"));
-            (teachers as DBTeachers).Add(new Teacher("e", "hhtrfdg", "hgd"));
-            (teachers as DBTeachers).Add(new Teacher("i", "hfdg", "hghfdd"));
-            (teachers as DBTeachers).Add(new Teacher("u", "hfdg", "hgdrg"));
+            teachers.Add(new Teacher("o", "hfdg", "hgd"));
+            teachers.Add(new Teacher("a", "hfdg", "hgd"));
+            teachers.Add(new Teacher("e", "hhtrfdg", "hgd"));
+            teachers.Add(new Teacher("i", "hfdg", "hghfdd"));
+            teachers.Add(new Teacher("u", "hfdg", "hgdrg"));
 
-            (subjects as DBSubjects).Add(new Subject("maths"));
-            (subjects as DBSubjects).Add(new Subject("programming"));
-            (subjects as DBSubjects).Add(new Subject("literature"));
-            (subjects as DBSubjects).Add(new Subject("english"));
-            (subjects as DBSubjects).Add(new Subject("ukrainian"));
+            subjects.Add(new Subject("maths"));
+            subjects.Add(new Subject("programming"));
+            subjects.Add(new Subject("literature"));
+            subjects.Add(new Subject("english"));
+            subjects.Add(new Subject("ukrainian"));
 
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[0], (teachers as DBTeachers)[0]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[0], (teachers as DBTeachers)[1]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[1], (teachers as DBTeachers)[2]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[3], (teachers as DBTeachers)[1]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[4], (teachers as DBTeachers)[1]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[0], (teachers as DBTeachers)[2]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[2], (teachers as DBTeachers)[3]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[3], (teachers as DBTeachers)[4]));
-            (teacher_subjects as DBTeacher_Subjects).Add(new Teacher_Subject((subjects as DBSubjects)[4], (teachers as DBTeachers)[4]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[0], teachers[0]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[0], teachers[1]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[1], teachers[2]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[3], teachers[1]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[4], teachers[1]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[0], teachers[2]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[2], teachers[3]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[3], teachers[4]));
+            teacher_subjects.Add(new Teacher_Subject(subjects[4], teachers[4]));
 
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[0], (teacher_subjects as DBTeacher_Subjects)[0], 56));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[0], (teacher_subjects as DBTeacher_Subjects)[6], 56));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[0], (teacher_subjects as DBTeacher_Subjects)[2], 32));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[0], (teacher_subjects as DBTeacher_Subjects)[3], 32));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[0], (teacher_subjects as DBTeacher_Subjects)[4], 56));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[0], teacher_subjects[0], 56));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[0], teacher_subjects[6], 56));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[0], teacher_subjects[2], 32));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[0], teacher_subjects[3], 32));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[0], teacher_subjects[4], 56));
 
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[1], (teacher_subjects as DBTeacher_Subjects)[1], 56));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[1], (teacher_subjects as DBTeacher_Subjects)[6], 56));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[1], (teacher_subjects as DBTeacher_Subjects)[3], 32));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[1], (teacher_subjects as DBTeacher_Subjects)[2], 32));
-            (group_teacherSubjects as DBGroup_TeacherSubjects).Add(new Group_TeacherSubject(groups[1], (teacher_subjects as DBTeacher_Subjects)[4], 32));*/
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[1], teacher_subjects[1], 56));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[1], teacher_subjects[6], 56));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[1], teacher_subjects[3], 32));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[1], teacher_subjects[2], 32));
+            group_teacherSubjects.Add(new Group_TeacherSubject(groups[1], teacher_subjects[4], 32));
 
             /*Console.WriteLine((students as DBStudents).Count);
 
@@ -271,9 +273,9 @@ namespace ProjectSTSlore
             foreach (var elem in markes)
                 Console.WriteLine(elem);
             foreach (var elem in persons)
-                Console.WriteLine(elem);
+                Console.WriteLine(elem);/**/
 
-            Console.WriteLine();
+            /*Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();

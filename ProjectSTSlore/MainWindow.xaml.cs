@@ -15,6 +15,8 @@ namespace ProjectSTSlore
             InitializeComponent();
             GroupsListView.ItemsSource = MainProgram.groups.Get();
             StudentsListView.ItemsSource = MainProgram.students.Get();
+            TeachersListView.ItemsSource = MainProgram.teachers.Get();
+            SubjectsListView.ItemsSource = MainProgram.subjects.Get();
             DataContext = mainProgram;
         }
     }

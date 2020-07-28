@@ -86,7 +86,7 @@ namespace ProjectSTSlore
          *
          */
 
-        protected abstract void DeepRemove(T entity);
+        //protected abstract void DeepRemove(T entity);
 
         public abstract void Remove(T item);
         /* Realisation of this method should look like this:
