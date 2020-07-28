@@ -54,40 +54,9 @@ namespace ProjectSTSlore
 
     public class DBGroups : SetDB<Group>
     {
-        public DBGroups(HumanResourcesDBContext HRDBContext) : base(HRDBContext)
+        public DBGroups(HumanResourcesDBContext HRDBContext) : base(HRDBContext, HRDBContext.Groups)
         {
             Console.WriteLine("groups established");
-        }
-
-        public override void AddWithoutCheck(Group item)
-        {
-            HRDBContext.Groups.Add(item);
-            HRDBContext.SaveChanges();
-        }
-
-        public override Group this[int index]
-        {
-            get
-            {
-                if (index >= 0 && index < HRDBContext.Groups.Count())
-                    return HRDBContext.Groups.ToList()[index];
-                else
-                    return null;
-            }
-            set
-            {
-                if (index >= 0 && index < HRDBContext.Groups.Count())
-                {
-                    HRDBContext.Groups.ToList()[index] = value;
-                    HRDBContext.SaveChanges();
-                }
-            }
-        }
-
-        public override void SoftRemove(int index)
-        {
-            HRDBContext.Groups.ToList().RemoveAt(index);
-            HRDBContext.SaveChanges();
         }
 
         public override bool Check(Group newGroup)
@@ -99,38 +68,6 @@ namespace ProjectSTSlore
                     return false;
                 }
             return true;
-        }
-        /*protected override void DeepRemove(Group entity)
-        {
-            for (int i = 0; i < MainProgram.students.Get().Count();)
-            {
-                if ((MainProgram.students as DBStudents)[i].group.id == entity.id)
-                {
-                    (MainProgram.students as DBStudents).Remove((MainProgram.students as DBStudents)[i]);//удаление студентов с оценками
-                    continue;
-                }
-                i++;
-            }
-            for (int i = 0; i < (MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects).Count();)
-            {
-                if ((MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects)[i].group.id == entity.id)
-                {
-                    (MainProgram.group_teacherSubjects as DBGroup_TeacherSubjects).SoftRemove(i);//удаление только связей, так как все связанные оценки уже удалены прошлым циклом
-                    continue;
-                }
-                i++;
-            }
-        }*/
-
-        public override void Remove(Group item)
-        {
-            HRDBContext.Groups.Remove(item);
-            HRDBContext.SaveChanges();
-        }
-
-        public override BindingList<Group> Get()
-        {
-            return HRDBContext.Groups.Local.ToBindingList();
         }
     }
     /*  public DBGroups() : base() { }

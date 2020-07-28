@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -27,13 +28,15 @@ namespace ProjectSTSlore
         }
     }
 
-    public abstract class SetDB<T> //TODO: make this as the realisation from IEnumerator for binding purposes
+    public abstract class SetDB<T> where T : Entity//TODO: make this as the realisation from IEnumerator for binding purposes
     {
         public HumanResourcesDBContext HRDBContext;
+        private DbSet<T> EntitySet;
 
-        protected SetDB(HumanResourcesDBContext HRDBContext)
+        protected SetDB(HumanResourcesDBContext HRDBContext, DbSet<T> EntitySet)
         {
             this.HRDBContext = HRDBContext;
+            this.EntitySet = EntitySet;
         }
         public void Add(T item)
         {
@@ -41,71 +44,51 @@ namespace ProjectSTSlore
             AddWithoutCheck(item);
         }
 
-        public abstract void AddWithoutCheck(T item);
-        /* Realisation of this method should look like this:
-         * 
-           {
-              HRDBContext.[Name_of_DbSet].Add(item);
-              HRDBContext.SaveChanges();
-           }
-         *
-         */
+        public virtual void AddWithoutCheck(T item)
+        {
+            EntitySet.Add(item);
+            HRDBContext.SaveChanges();
+        }
 
         public abstract bool Check(T newItem);
 
-        public abstract T this[int index] { get;set; }
-        /* Realisation of this method should look like this:
-         * 
-           {
-               get
-               {
-                   if (index >= 0 && index < HRDBContext.[Name_of_DbSet].Count())
-                       return HRDBContext.[Name_of_DbSet].ToList()[index];
-                   else
-                       return null;
-               }
-               set
-               {
-                   if (index >= 0 && index < HRDBContext.[Name_of_DbSet].Count())
-                   {
-                       HRDBContext.[Name_of_DbSet].ToList()[index] = value;
-                       HRDBContext.SaveChanges();
-                   }
-               }
-           }
-         *
-         */
+        public T this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < EntitySet.Count())
+                    return EntitySet.ToList()[index];
+                else
+                    return null;
+            }
+            set
+            {
+                if (index >= 0 && index < EntitySet.Count())
+                {
+                    EntitySet.ToList()[index] = value;
+                    HRDBContext.SaveChanges();
+                }
+            }
+        }
 
-        public abstract void SoftRemove(int index);
-        /* Realisation of this method should look like this:
-         * 
-           {
-               HRDBContext.[Name_of_DbSet].ToList().RemoveAt(index);
-               HRDBContext.SaveChanges();
-           }
-         *
-         */
+        public void SoftRemove(int index)
+        {
+            EntitySet.ToList().RemoveAt(index);
+            HRDBContext.SaveChanges();
+        }
 
         //protected abstract void DeepRemove(T entity);
 
-        public abstract void Remove(T item);
-        /* Realisation of this method should look like this:
-         *
-             {
-                 HRDBContext.[Name_of_DbSet].Remove(item);
-                 HRDBContext.SaveChanges();
-             }
-         * 
-         */
+        public void Remove(T item)
+        {
+            EntitySet.Remove(item);
+            HRDBContext.SaveChanges();
+        }
 
-        public abstract BindingList<T> Get();
-        /* Realisation of this method should look like this:
-         *
-             {
-                 return HRDBContext.[Name_of_DbSet].Local.ToBindingList();
-             }
-         * 
-         */
+        public BindingList<T> Get()
+        {
+            return EntitySet.Local.ToBindingList();
+        }
     }
     public abstract class IDB<T> : ObservableCollection<T> where T : Entity
     {

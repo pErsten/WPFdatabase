@@ -9,8 +9,8 @@ using ProjectSTSlore;
 namespace ProjectSTSlore.Migrations
 {
     [DbContext(typeof(HumanResourcesDBContext))]
-    [Migration("20200718052825_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20200728143410_DB1_2_6")]
+    partial class DB1_2_6
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,7 +56,7 @@ namespace ProjectSTSlore.Migrations
 
                     b.HasIndex("teacherSubjectid");
 
-                    b.ToTable("Group_TeacherSubject");
+                    b.ToTable("Group_TeacherSubjects");
                 });
 
             modelBuilder.Entity("ProjectSTSlore.Marks", b =>
@@ -138,7 +138,7 @@ namespace ProjectSTSlore.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Subject");
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("ProjectSTSlore.Teacher", b =>
@@ -154,7 +154,7 @@ namespace ProjectSTSlore.Migrations
 
                     b.HasIndex("personid");
 
-                    b.ToTable("Teacher");
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("ProjectSTSlore.Teacher_Subject", b =>
@@ -175,7 +175,7 @@ namespace ProjectSTSlore.Migrations
 
                     b.HasIndex("teacherid");
 
-                    b.ToTable("Teacher_Subject");
+                    b.ToTable("Teacher_Subjects");
                 });
 
             modelBuilder.Entity("ProjectSTSlore.Group_TeacherSubject", b =>

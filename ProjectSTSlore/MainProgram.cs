@@ -144,9 +144,14 @@ namespace ProjectSTSlore
                 .UseSqlite($"Data Source={homeDirectory}\\HumanResourcesDB.db;")
                 .Options;
             DB = new HumanResourcesDBContext(options);
-            //DB.Groups.Load();
-            //DB.Students.Load();
-            //DB.Persons.Load();
+            DB.Groups.Load();
+            DB.Students.Load();
+            DB.Persons.Load();
+            DB.Teacher_Subjects.Load();
+            DB.Teachers.Load();
+            DB.Subjects.Load();
+            DB.Group_TeacherSubjects.Load();
+            DB.Marks.Load();
 
             persons = new DBPersons(DB);
             groups = new DBGroups(DB);
@@ -156,7 +161,7 @@ namespace ProjectSTSlore
             subjects = new DBSubjects(DB);
             group_teacherSubjects = new DBGroup_TeacherSubjects(DB);
             teacher_subjects = new DBTeacher_Subjects(DB);
-            //if (DB.Groups.Count() == 0)
+            if (DB.Groups.Count() == 0)
                 StarterPack();
         }
         private void DirectoryCreator()

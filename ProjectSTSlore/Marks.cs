@@ -83,58 +83,12 @@ namespace ProjectSTSlore
 
     public class DBMarks : SetDB<Marks>
     {
-        public DBMarks(HumanResourcesDBContext HRDBContext) : base(HRDBContext) { }
+        public DBMarks(HumanResourcesDBContext HRDBContext) : base(HRDBContext, HRDBContext.Marks) { }
 
-        public override Marks this[int index]
-        {
-            get
-            {
-                if (index >= 0 && index < HRDBContext.Marks.Count())
-                    return HRDBContext.Marks.ToList()[index];
-                else
-                    return null;
-            }
-            set
-            {
-                if (index >= 0 && index < HRDBContext.Marks.Count())
-                {
-                    HRDBContext.Marks.ToList()[index] = value;
-                    HRDBContext.SaveChanges();
-                }
-            }
-        }
-
-        public override void AddWithoutCheck(Marks newMarks)
-        {
-            HRDBContext.Marks.Add(newMarks);
-            HRDBContext.SaveChanges();
-        }
         public override bool Check(Marks newMarks)
         {
             return true;
         }
-
-        public override BindingList<Marks> Get()
-        {
-            return HRDBContext.Marks.Local.ToBindingList();
-        }
-
-        public override void Remove(Marks item)
-        {
-            HRDBContext.Marks.Remove(item);
-            HRDBContext.SaveChanges();
-        }
-
-        public override void SoftRemove(int index)
-        {
-            HRDBContext.Marks.ToList().RemoveAt(index);
-            HRDBContext.SaveChanges();
-        }
-
-        /*protected override void DeepRemove(Marks entity)
-        {
-            Entity.errorMessage("you shouldn't be there");
-        }*/
     }
     /*public class DBMarks : IDB<Marks>
     {

@@ -85,36 +85,11 @@ namespace ProjectSTSlore
 
     public class DBPersons : SetDB<Person>
     {
-        public DBPersons(HumanResourcesDBContext HRDBContext) : base(HRDBContext) { }
+        public DBPersons(HumanResourcesDBContext HRDBContext) : base(HRDBContext, HRDBContext.Persons) { }
 
         public override void AddWithoutCheck(Person item)
         {
             HRDBContext.Persons.Add(item);
-            HRDBContext.SaveChanges();
-        }
-
-        public override Person this[int index]
-        {
-            get
-            {
-                if (index >= 0 && index < HRDBContext.Persons.Count())
-                    return HRDBContext.Persons.ToList()[index];
-                else
-                    return null;
-            }
-            set
-            {
-                if (index >= 0 && index < HRDBContext.Persons.Count())
-                {
-                    HRDBContext.Persons.ToList()[index] = value;
-                    HRDBContext.SaveChanges();
-                }
-            }
-        }
-
-        public override void SoftRemove(int index)
-        {
-            HRDBContext.Persons.ToList().RemoveAt(index);
             HRDBContext.SaveChanges();
         }
 
@@ -152,16 +127,5 @@ namespace ProjectSTSlore
                     }
                 }
         }*/
-
-        public override void Remove(Person item)
-        {
-            HRDBContext.Persons.Remove(item);
-            HRDBContext.SaveChanges();
-        }
-
-        public override BindingList<Person> Get()
-        {
-            return HRDBContext.Persons.Local.ToBindingList();
-        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace ProjectSTSlore
 {
@@ -17,7 +18,8 @@ namespace ProjectSTSlore
         public HumanResourcesDBContext(DbContextOptions<HumanResourcesDBContext> options)
             : base(options)
         {
-            Database.EnsureDeleted();
+            
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

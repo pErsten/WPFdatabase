@@ -65,26 +65,7 @@ namespace ProjectSTSlore
 
     public class DBStudents : SetDB<Student>
     {
-        public DBStudents(HumanResourcesDBContext HRDBContext) : base(HRDBContext) { }
-
-        public override Student this[int index]
-        {
-            get
-            {
-                if (index >= 0 && index < HRDBContext.Students.Count())
-                    return HRDBContext.Students.ToList()[index];
-                else
-                    return null;
-            }
-            set
-            {
-                if (index >= 0 && index < HRDBContext.Students.Count())
-                {
-                    HRDBContext.Students.ToList()[index] = value;
-                    HRDBContext.SaveChanges();
-                }
-            }
-        }
+        public DBStudents(HumanResourcesDBContext HRDBContext) : base(HRDBContext, HRDBContext.Students) { }
 
         public override void AddWithoutCheck(Student newStudent)
         {
@@ -108,37 +89,6 @@ namespace ProjectSTSlore
                 return false;
             }
             return true;
-        }
-
-        public override void Remove(Student item)
-        {
-            HRDBContext.Students.Remove(item);
-            HRDBContext.SaveChanges();
-        }
-
-        public override void SoftRemove(int index)
-        {
-            HRDBContext.Students.ToList().RemoveAt(index);
-            HRDBContext.SaveChanges();
-        }
-
-        /*protected override void DeepRemove(Student entity)//удаление студента со всеми его оценками
-        {
-            entity.person.personRole = PersonRole.NONE;
-            for (int i = 0; i < (MainProgram.marks as IDB<Marks>).Count();)
-            {
-                if ((MainProgram.marks as DBMarks)[i].student.id == entity.id)
-                {
-                    (MainProgram.marks as DBMarks).SoftRemove(i);
-                    continue;
-                }
-                i++;
-            }
-        }*/
-
-        public override BindingList<Student> Get()
-        {
-            return HRDBContext.Students.Local.ToBindingList();
         }
     }
     /*public class DBStudents : IDB<Student>

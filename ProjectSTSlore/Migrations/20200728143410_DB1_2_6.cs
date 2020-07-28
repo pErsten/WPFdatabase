@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjectSTSlore.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class DB1_2_6 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +14,7 @@ namespace ProjectSTSlore.Migrations
                     id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     groupNumber = table.Column<int>(nullable: true),
-                    image = table.Column<string>(nullable: true)
+                    image = table.Column<byte[]>(type: "blob", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,7 +39,7 @@ namespace ProjectSTSlore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subject",
+                name: "Subjects",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
@@ -47,7 +48,7 @@ namespace ProjectSTSlore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subject", x => x.id);
+                    table.PrimaryKey("PK_Subjects", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,7 +78,7 @@ namespace ProjectSTSlore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teacher",
+                name: "Teachers",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
@@ -86,9 +87,9 @@ namespace ProjectSTSlore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Teacher", x => x.id);
+                    table.PrimaryKey("PK_Teachers", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Teacher_Persons_personid",
+                        name: "FK_Teachers_Persons_personid",
                         column: x => x.personid,
                         principalTable: "Persons",
                         principalColumn: "id",
@@ -96,7 +97,7 @@ namespace ProjectSTSlore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teacher_Subject",
+                name: "Teacher_Subjects",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
@@ -106,23 +107,23 @@ namespace ProjectSTSlore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Teacher_Subject", x => x.id);
+                    table.PrimaryKey("PK_Teacher_Subjects", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Teacher_Subject_Subject_subjectid",
+                        name: "FK_Teacher_Subjects_Subjects_subjectid",
                         column: x => x.subjectid,
-                        principalTable: "Subject",
+                        principalTable: "Subjects",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Teacher_Subject_Teacher_teacherid",
+                        name: "FK_Teacher_Subjects_Teachers_teacherid",
                         column: x => x.teacherid,
-                        principalTable: "Teacher",
+                        principalTable: "Teachers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Group_TeacherSubject",
+                name: "Group_TeacherSubjects",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
@@ -133,17 +134,17 @@ namespace ProjectSTSlore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Group_TeacherSubject", x => x.id);
+                    table.PrimaryKey("PK_Group_TeacherSubjects", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Group_TeacherSubject_Groups_groupid",
+                        name: "FK_Group_TeacherSubjects_Groups_groupid",
                         column: x => x.groupid,
                         principalTable: "Groups",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Group_TeacherSubject_Teacher_Subject_teacherSubjectid",
+                        name: "FK_Group_TeacherSubjects_Teacher_Subjects_teacherSubjectid",
                         column: x => x.teacherSubjectid,
-                        principalTable: "Teacher_Subject",
+                        principalTable: "Teacher_Subjects",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -167,21 +168,21 @@ namespace ProjectSTSlore.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Marks_Group_TeacherSubject_subjectForMarksid",
+                        name: "FK_Marks_Group_TeacherSubjects_subjectForMarksid",
                         column: x => x.subjectForMarksid,
-                        principalTable: "Group_TeacherSubject",
+                        principalTable: "Group_TeacherSubjects",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Group_TeacherSubject_groupid",
-                table: "Group_TeacherSubject",
+                name: "IX_Group_TeacherSubjects_groupid",
+                table: "Group_TeacherSubjects",
                 column: "groupid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Group_TeacherSubject_teacherSubjectid",
-                table: "Group_TeacherSubject",
+                name: "IX_Group_TeacherSubjects_teacherSubjectid",
+                table: "Group_TeacherSubjects",
                 column: "teacherSubjectid");
 
             migrationBuilder.CreateIndex(
@@ -205,19 +206,19 @@ namespace ProjectSTSlore.Migrations
                 column: "personid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Teacher_personid",
-                table: "Teacher",
-                column: "personid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Teacher_Subject_subjectid",
-                table: "Teacher_Subject",
+                name: "IX_Teacher_Subjects_subjectid",
+                table: "Teacher_Subjects",
                 column: "subjectid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Teacher_Subject_teacherid",
-                table: "Teacher_Subject",
+                name: "IX_Teacher_Subjects_teacherid",
+                table: "Teacher_Subjects",
                 column: "teacherid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Teachers_personid",
+                table: "Teachers",
+                column: "personid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -229,19 +230,19 @@ namespace ProjectSTSlore.Migrations
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Group_TeacherSubject");
+                name: "Group_TeacherSubjects");
 
             migrationBuilder.DropTable(
                 name: "Groups");
 
             migrationBuilder.DropTable(
-                name: "Teacher_Subject");
+                name: "Teacher_Subjects");
 
             migrationBuilder.DropTable(
-                name: "Subject");
+                name: "Subjects");
 
             migrationBuilder.DropTable(
-                name: "Teacher");
+                name: "Teachers");
 
             migrationBuilder.DropTable(
                 name: "Persons");

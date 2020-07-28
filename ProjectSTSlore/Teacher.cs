@@ -52,32 +52,7 @@ namespace ProjectSTSlore
 
     public class DBTeachers : SetDB<Teacher>
     {
-        public DBTeachers(HumanResourcesDBContext HRDBContext) : base(HRDBContext) { }
-
-        public override Teacher this[int index]
-        {
-            get
-            {
-                if (index >= 0 && index < HRDBContext.Teachers.Count())
-                    return HRDBContext.Teachers.ToList()[index];
-                else
-                    return null;
-            }
-            set
-            {
-                if (index >= 0 && index < HRDBContext.Teachers.Count())
-                {
-                    HRDBContext.Teachers.ToList()[index] = value;
-                    HRDBContext.SaveChanges();
-                }
-            }
-        }
-
-        public override void AddWithoutCheck(Teacher newTeacher)
-        {
-            HRDBContext.Teachers.Add(newTeacher);
-            HRDBContext.SaveChanges();
-        }
+        public DBTeachers(HumanResourcesDBContext HRDBContext) : base(HRDBContext, HRDBContext.Teachers) { }
 
         public override bool Check(Teacher newTeacher)
         {
@@ -88,39 +63,7 @@ namespace ProjectSTSlore
             }
             return true;
         }
-
-        public override void Remove(Teacher item)
-        {
-            HRDBContext.Teachers.Remove(item);
-            HRDBContext.SaveChanges();
-        }
-
-        public override void SoftRemove(int index)
-        {
-            HRDBContext.Teachers.ToList().RemoveAt(index);
-            HRDBContext.SaveChanges();
-        }
-
-        /*protected override void DeepRemove(Student entity)//удаление студента со всеми его оценками
-        {
-            entity.person.personRole = PersonRole.NONE;
-            for (int i = 0; i < (MainProgram.marks as IDB<Marks>).Count();)
-            {
-                if ((MainProgram.marks as DBMarks)[i].student.id == entity.id)
-                {
-                    (MainProgram.marks as DBMarks).SoftRemove(i);
-                    continue;
-                }
-                i++;
-            }
-        }*/
-
-        public override BindingList<Teacher> Get()
-        {
-            return HRDBContext.Teachers.Local.ToBindingList();
-        }
     }
-
     /*public class DBTeachers : IDB<Teacher>
     {
         public DBTeachers() : base() { }
